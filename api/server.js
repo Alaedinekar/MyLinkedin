@@ -21,4 +21,6 @@ mongoose.connect(DB_URI,{
 })
 
 app.get('/', (req, res) => res.send('Hellow World!'));
+
+app.get('/personne',(req,res)=> res.send(db.maincluster.find({})))//Select * from tablepersonne
 app.listen(port, () => console.log(`Example app listening on port port!`));
