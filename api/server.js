@@ -20,7 +20,15 @@ mongoose.connect(DB_URI,{
     else console.log('Connected to the database')
 })
 
-app.get('/', (req, res) => res.send('Hellow World!'));
-
-app.get('/personne',(req,res)=> res.send(db.maincluster.find({})))//Select * from tablepersonne
+app.get('/',  (req, res) => res.send('Hellow World!'));
+/*
+app.get('/personne',async (req,res)=> {
+    try {
+    const personne = await DB_URI.find()
+    res.send(personne)}
+    catch (error){
+        res.status(500).json({message:err.message})
+    }//Select * from tablepersonne
+})
+*/
 app.listen(port, () => console.log(`Example app listening on port port!`));
