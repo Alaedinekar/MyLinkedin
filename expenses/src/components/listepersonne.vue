@@ -1,12 +1,26 @@
 <template>
-  <div >
-    la liste des personnes : {{msg}}
-    
-  </div>
-</template>
+  <v-form>
+    <v-container>
+      <v-row>
+        <v-col
+          cols="12"
+          sm="6"
+          md="3"
+        >
+          <v-text-field
+            label="Solo"
+            placeholder="Nom"
+            solo
+          ></v-text-field>
+        </v-col>
+
+      </v-row>
+    </v-container>
+  </v-form>
+  </template>
 
 <script>
-export default {
+  export default {
   name: 'listepersonne',
   props: {
     msg: String
@@ -14,20 +28,3 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
