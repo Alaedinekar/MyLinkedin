@@ -49,7 +49,7 @@ export default {
 
   components: {
     listepersonne,
-    accueil,
+    //accueil,
     skills
   },
 
@@ -58,3 +58,9 @@ export default {
   }),
 };
 </script>
+
+<style>
+#app{
+color: greenyellow
+}
+</style>
