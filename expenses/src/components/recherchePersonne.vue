@@ -1,19 +1,14 @@
 <template>
   <v-form
-    ref="form"
-    v-model="valid"
+    ref="form"    
     lazy-validation
   >
-    <v-text-field
-      v-model="name"      
-      :rules="nameRules"
+    <v-text-field     
       label="Nom"
       required
     ></v-text-field>
 
     <v-text-field
-      v-model="email"
-      :rules="emailRules"
       label="Prenom"
       required
     ></v-text-field>
@@ -22,7 +17,7 @@
       
       color="success"
       class="mr-4"
-      @click="validate"
+      @click="getData"
     >
       Rechercher
     </v-btn>
@@ -33,9 +28,22 @@
 
 
 <script>
+const fetch = require('node-fetch');
+
 export default {
-  
+ 
+  methods:{
+
+    getData : async () => {
+      var jsonContent = await fetch('http://localhost:3030/skill');
+      var json = await jsonContent.json();
+      console.log(json)
+      return json
+
+  }
+  }
 };
+
 </script>
 
 <style>

@@ -14,7 +14,9 @@
  import PHeader from "./components/PHeader";
  import recherchePersonne from "./components/recherchePersonne";
  import Pfoot from "./components/Pfoot";
- 
+
+ const fetch = require('node-fetch');
+
 export default {
   name: "App",
   components: {
@@ -22,10 +24,16 @@ export default {
     recherchePersonne,
     Pfoot
   },
+  
   data: () => ({
     //
   })
-};
+,
+methods :
+{
+
+}
+}
 </script>
 
 <style>

@@ -8,10 +8,6 @@ router.get('/', userController.getUsers); // renvoi tous les users
 router.get('/name/:name', userController.getUserByName);
 router.get('/id/:id', userController.getUserById);
 router.get('/skill/:skillName', userController.getBySkill);
-<<<<<<< HEAD
-router.post('/skill/add/:id', userController.newSkill);
-module.exports = router;
-=======
 
 module.exports = router;
 
@@ -25,4 +21,3 @@ app.get('/personne',async (req,res)=> {
     }//Select * from tablepersonne
 })
 */
->>>>>>> 23ec36ae8e94388e93fc6e06227e178d0b03a61c
