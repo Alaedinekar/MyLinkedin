@@ -1,6 +1,5 @@
 const userController = require('../controllers/user');
 const express = require('express');
-const user = require('../controllers/user');
 const router = express.Router();
 
 router.post('/addUser', userController.newUser); // créer un nouvel utilisateur (voir le model pour le body)
