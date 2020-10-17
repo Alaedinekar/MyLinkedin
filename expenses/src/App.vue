@@ -2,9 +2,9 @@
   <v-app>
     <PHeader/>
     <recherchePersonne/>
-    <div class="foot">
+    <footer>
       <Pfoot/>
-    </div>
+    </footer>
   </v-app>
   
 </template>
@@ -14,6 +14,7 @@
  import PHeader from "./components/PHeader";
  import recherchePersonne from "./components/recherchePersonne";
  import Pfoot from "./components/Pfoot";
+ 
 export default {
   name: "App",
   components: {
@@ -28,7 +29,9 @@ export default {
 </script>
 
 <style>
-.foot{
-  bottom: sticky;
+#footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 </style>
