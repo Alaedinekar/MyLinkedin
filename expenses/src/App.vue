@@ -15,8 +15,6 @@
  import recherchePersonne from "./components/recherchePersonne";
  import Pfoot from "./components/Pfoot";
 
- const fetch = require('node-fetch');
-
 export default {
   name: "App",
   components: {

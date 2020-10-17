@@ -35,7 +35,7 @@ export default {
   methods:{
 
     getData : async () => {
-      var jsonContent = await fetch('http://localhost:3030/skill');
+      var jsonContent = await fetch('http://localhost:3000/user/');
       var json = await jsonContent.json();
       console.log(json)
       return json
