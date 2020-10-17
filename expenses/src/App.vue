@@ -1,44 +1,34 @@
 <template>
-  <div id="app">
-    <listepersonne msg='jb'/>
-    <main> 
-      <div class="search-box">
-        <input type="text"  class="search bar"  placeholder=" recherche..."/>
-      </div>
-    
+  <v-app>
+    <PHeader/>
+    <recherchePersonne/>
+    <div class="foot">
+      <Pfoot/>
+    </div>
+  </v-app>
   
-  </main>
-  </div>
 </template>
 
 <script>
 
-import listepersonne from './components/listepersonne.vue'
+ import PHeader from "./components/PHeader";
+ import recherchePersonne from "./components/recherchePersonne";
+ import Pfoot from "./components/Pfoot";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    listepersonne
-    
-  }
-}
+    PHeader,
+    recherchePersonne,
+    Pfoot
+  },
+  data: () => ({
+    //
+  })
+};
 </script>
 
 <style>
-
-
-
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
-body {
-  font-family: 'montserrat',sans-serif;
-
-}
-#app{
-  background-image: './assets/background.jpg';
-  background-size: cover;
-
+.foot{
+  bottom: sticky;
 }
 </style>
