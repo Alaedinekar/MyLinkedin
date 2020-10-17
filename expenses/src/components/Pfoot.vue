@@ -1,4 +1,5 @@
 <template>
+
   <v-card height="150">
     <v-footer
       absolute
@@ -12,19 +13,17 @@
       </v-col>
     </v-footer>
   </v-card>
+
 </template>
 
 <script>
   export default {
     data: () => ({
-      links: [
-        'Home',
-        'About Us',
-        'Team',
-        'Services',
-        'Blog',
-        'Contact Us',
-      ],
+      
     }),
   }
 </script>
+
+<style>
+
+</style>

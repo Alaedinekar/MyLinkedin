@@ -2,10 +2,11 @@
   <v-app>
     <PHeader/>
     <recherchePersonne/>
-    <Pfoot/>
-       
-     
+    <div class="foot">
+      <Pfoot/>
+    </div>
   </v-app>
+  
 </template>
 
 <script>
@@ -27,5 +28,7 @@ export default {
 </script>
 
 <style>
-
+.foot{
+  bottom: sticky;
+}
 </style>
