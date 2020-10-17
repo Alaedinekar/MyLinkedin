@@ -5,6 +5,7 @@ const port = 3000;
 const mongoose = require('mongoose');
 const DB_URI = require('./config/db_config');
 const userRoutes = require('./routes/user');
+const uri = require('./config/db_config');
 
 
 // Middlewares
@@ -19,7 +20,7 @@ mongoose.connect(DB_URI,{
     if(err) console.log(err)
     else console.log('Connected to the database')
 })
-
+console.log(uri)
 app.get('/',  (req, res) => res.send('Hellow World!'));
 /*
 app.get('/personne',async (req,res)=> {

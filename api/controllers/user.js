@@ -39,7 +39,17 @@ const getUserByName = async (req,res) => {
 }
 const getBySkill = async (req,res) => {
     const skillName = req.params.skillName;
-    await userModel.find({skillName : skillName})
+    await userModel.find({"skillsList.skillName" : skillName})
+    .then(rslt => {
+        rslt.length ? res.status(200).json(rslt) : res.status(400).json({erreur : "Aucun utilisateur ne maitrise cette technologie"})
+    })
+    .catch(err => {
+        res.status(400).send({message : err.message});
+    })
+}
+const getUserById = async (req,res) => {
+    const id = req.params.id;
+    await userModel.find({_id : id})
     .then(rslt => {
         rslt.length ? res.status(200).json(rslt) : res.status(200).json({erreur : "Utilisateur inconnu ...."})
     })
@@ -47,9 +57,19 @@ const getBySkill = async (req,res) => {
         res.status(400).send({message : err.message});
     })
 }
+const newSkill = async (req,res) => {
+    // const id = req.params.id;
+    // let skill = {skillName : req.body.skillName};
+    // let newData = {$push : {skillsList : skill}};
+    // await userModel.findByIdAndUpdate(id, newData, (err, doc) => {
+    //     // res.send(doc.);
+    // })  TODO
+}
 module.exports = {
     newUser : newUser,
     getUsers : getUsers,
     getUserByName : getUserByName,
-    getBySkill : getBySkill
+    getBySkill : getBySkill,
+    getUserById : getUserById,
+    newSkill : newSkill
 }
