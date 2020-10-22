@@ -3,7 +3,7 @@
   <v-card height="150">
     <v-footer
       absolute
-      class="font-weight-medium"
+      class="footer"
     >
       <v-col
         class="text-center"
@@ -25,5 +25,13 @@
 </script>
 
 <style>
-
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+}
 </style>
