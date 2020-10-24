@@ -22,13 +22,7 @@
       v-model="skill"
     ></v-text-field>
 
-    <v-btn
-      color="success"
-      class="mr-4"
-      @click="getDataByName"
-    >
-      Rechercher
-    </v-btn>
+   
 <div v-if="this.users.length > 0">
 
     <v-card v-for="user in filterUsers" :key="user.userName" outlined tile elevation="2" class="pa-8">
@@ -41,6 +35,7 @@
               <li>{{skill.skillName}}</li>
             </ul>
         </v-card-text>
+       <!--map/> -->
       <!-- </v-card> -->
     </v-card>
 </div>
@@ -50,6 +45,8 @@
 
 
 <script>
+
+
 const fetch = require('node-fetch');
 export default {
   data() {
@@ -62,6 +59,7 @@ export default {
     }
     
   },
+ 
   mounted(){
     this.getData().then((result)=>{
       // console.log(result)

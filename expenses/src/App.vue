@@ -1,10 +1,12 @@
 <template>
   <v-app>
+      <Pmap/>
     <PHeader/>
     <recherchePersonne/>
     <footer>
       <Pfoot/>
     </footer>
+  
   </v-app>
   
 </template>
@@ -14,13 +16,16 @@
  import PHeader from "./components/PHeader";
  import recherchePersonne from "./components/recherchePersonne";
  import Pfoot from "./components/Pfoot";
+ import Pmap from "./components/Pmap";
+ 
 
 export default {
   name: "App",
   components: {
     PHeader,
     recherchePersonne,
-    Pfoot
+    Pfoot,
+    Pmap
   },
   
   data: () => ({
