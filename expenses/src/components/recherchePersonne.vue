@@ -1,4 +1,5 @@
 <template>
+<v-container>
   <v-form
     ref="form"    
     lazy-validation
@@ -44,6 +45,7 @@
     </v-card>
 </div>
   </v-form>
+  </v-container>
 </template>
 
 
