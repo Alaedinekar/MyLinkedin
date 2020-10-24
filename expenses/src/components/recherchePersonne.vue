@@ -72,7 +72,7 @@ export default {
   computed: {
     filterUsers: function () {
       return this.users.filter((user) => {
-          return user.userName.match(this.prenom);
+          return user.userName.match(this.prenom.toUpperCase());
       });
       // TODO la même chose sur les skills
     }
