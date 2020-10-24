@@ -8,11 +8,19 @@ const skillSchema = mongoose.Schema({
 }
 );
 const UserSchema = mongoose.Schema({
-    userName : {
+    userFirstName : {
+        type : String,
+        required : true
+    },
+    userLastName : {
         type : String,
         required : true
     },
     userEmail : {
+        type : String,
+        required : true
+    },
+    userPassword : {
         type : String,
         required : true
     },
