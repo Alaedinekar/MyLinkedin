@@ -5,6 +5,7 @@ const port = 3000;
 const mongoose = require('mongoose');
 const DB_URI = require('./config/db_config');
 const userRoutes = require('./routes/user');
+const projectRoutes = require('./routes/project');
 const uri = require('./config/db_config');
 
 app.use(function (req, res, next) {
@@ -29,6 +30,7 @@ app.use(function (req, res, next) {
 // Middlewares
 app.use(bodyParser.json());
 app.use('/user', userRoutes);
+app.use('/project', projectRoutes);
 
 // DB connection
 mongoose.connect(DB_URI,{

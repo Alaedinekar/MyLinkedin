@@ -103,6 +103,7 @@ const getUsersProjects = async (req,res) => {
         res.status(400).send({message : error.message})
     })
 }
+
 module.exports = {
     newUser : newUser,
     getUsers : getUsers,
