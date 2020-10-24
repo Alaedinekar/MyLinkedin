@@ -1,9 +1,7 @@
 <template>
-
-  <v-card height="150">
+<div class="footer">
     <v-footer
       absolute
-      class="footer"
     >
       <v-col
         class="text-center"
@@ -12,8 +10,7 @@
         {{ new Date().getFullYear() }} — Projet web BUFFA <br><strong> KAROUIA -- TRENTIN</strong>
       </v-col>
     </v-footer>
-  </v-card>
-
+</div>
 </template>
 
 <script>
@@ -25,13 +22,12 @@
 </script>
 
 <style>
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: red;
-  color: white;
-  text-align: center;
+#footer {
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height:30px;
+   width:100%;
+   background:#999;
 }
 </style>
