@@ -1,4 +1,7 @@
 const userModel = require('../models/user');
+const projectModel = require('../models/project');
+const { Mongoose } = require('mongoose');
+
 
 const newUser = async (req,res) => {
     const data = req.body;
@@ -66,11 +69,47 @@ const newSkill = async (req,res) => {
     //     // res.send(doc.);
     // })  TODO
 }
+
+const newUserProject = async (req,res) => {
+    const data = req.body;
+    const userId = req.params.id;
+    const newProject = new projectModel({
+        idOwner : userId,
+        projectName : data.projectName,
+        groupSize : data.groupSize,
+        languagesInvolved : data.languagesInvolved,
+        shortDescription : data.shortDescription,
+        longDescription : data.longDescription,
+        devTime : data.devTime,
+        date : data.date
+
+    });
+    await newProject.save()
+    .then((result) => {
+        res.json({message: "Sucess, correctly added to the dataBASE"});
+    })
+    .catch(err => {
+        res.json({message : err.message});
+    })
+}
+
+const getUsersProjects = async (req,res) => {
+    const userId = req.params.id;
+    await projectModel.find({idOwner : userId})
+    .then(result => {
+       res.status(200).send(result)
+    })
+    .catch(error => {
+        res.status(400).send({message : error.message})
+    })
+}
 module.exports = {
     newUser : newUser,
     getUsers : getUsers,
     getUserByName : getUserByName,
     getBySkill : getBySkill,
     getUserById : getUserById,
-    newSkill : newSkill
+    newSkill : newSkill,
+    newUserProject : newUserProject,
+    getUsersProjects : getUsersProjects
 }
