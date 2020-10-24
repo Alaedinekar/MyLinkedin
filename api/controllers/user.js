@@ -1,6 +1,7 @@
 const userModel = require('../models/user');
 const projectModel = require('../models/project');
 const { Mongoose } = require('mongoose');
+const md5 = require('md5');
 
 
 const newUser = async (req,res) => {
@@ -9,6 +10,7 @@ const newUser = async (req,res) => {
     const newUser = new userModel({
         userName : data.userName.toUpperCase(),
         userEmail : data.userEmail,
+        userPassword : md5(data.userPassword),
         userPhoneNumber : data.userPhoneNumber,
         userAddress : data.userAddress,
         skillsList : data.skillsList

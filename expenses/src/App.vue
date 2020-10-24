@@ -2,7 +2,7 @@
   <v-app>
       <Pmap/>
     <PHeader/>
-    <recherchePersonne/>
+    <component v-bind:is="component"></component>
     <footer>
       <Pfoot/>
     </footer>
@@ -16,21 +16,23 @@
  import PHeader from "./components/PHeader";
  import recherchePersonne from "./components/recherchePersonne";
  import Pfoot from "./components/Pfoot";
- import Pmap from "./components/Pmap";
- 
+ import LoginRegister from  "./components/LoginRegister";
+import Pmap from "./components/Pmap";
 
 export default {
   name: "App",
   components: {
-    PHeader,
-    recherchePersonne,
-    Pfoot,
-    Pmap
+    "PHeader" : PHeader,
+    "Pmap" : Pmap,
+    "recherchePersonne" : recherchePersonne,
+    "Pfoot" : Pfoot,
+    "LoginRegister" : LoginRegister
   },
-  
-  data: () => ({
-    //
-  })
+  data () {
+    return {
+      component : "LoginRegister"
+    }
+  }
 ,
 methods :
 {
