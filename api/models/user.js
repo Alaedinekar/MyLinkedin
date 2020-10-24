@@ -20,6 +20,10 @@ const UserSchema = mongoose.Schema({
         type : String,
         required : true
     },
+    userAddress : {
+        type : String,
+        required : true
+    },
     skillsList : [skillSchema]
 })
 

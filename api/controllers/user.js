@@ -2,16 +2,17 @@ const userModel = require('../models/user');
 
 const newUser = async (req,res) => {
     const data = req.body;
-
+    data.userName.toUpperCase();
     const newUser = new userModel({
-        userName : data.userName,
+        userName : data.userName.toUpperCase(),
         userEmail : data.userEmail,
         userPhoneNumber : data.userPhoneNumber,
+        userAddress : data.userAddress,
         skillsList : data.skillsList
     });
     await newUser.save()
     .then(data => {
-        res.json(data);
+        res.json({message: "Sucess, correctly added to the dataBASE"});
     })
     .catch(err => {
         res.json({message : err.message});
