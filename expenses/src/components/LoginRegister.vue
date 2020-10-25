@@ -3,7 +3,7 @@
             <div>
                 <v-tabs v-model="tab" show-arrows background-color="deep-purple accent-4" icons-and-text dark grow>
                     <v-tabs-slider color="purple darken-4"></v-tabs-slider>
-                    <v-tab v-for="i in tabs" :key="i">
+                    <v-tab v-for="i in tabs" :key="i.icon">
                         <v-icon large>{{ i.icon }}</v-icon>
                         <div class="caption py-1">{{ i.name }}</div>
                     </v-tab>
@@ -13,16 +13,18 @@
                                 <v-form ref="loginForm" v-model="valid" lazy-validation>
                                     <v-row>
                                         <v-col cols="12">
-                                            <v-text-field v-model="loginEmail" :rules="loginEmailRules" label="E-mail" required></v-text-field>
+                                            
+                                            <v-text-field v-model="loginEmail"  :rules="loginEmailRules" label="E-mail" required></v-text-field>
                                         </v-col>
                                         <v-col cols="12">
-                                            <v-text-field v-model="loginPassword" :append-icon="show1?'eye':'eye-off'" :rules="[rules.required, rules.min]" :type="show1 ? 'text' : 'password'" name="input-10-1" label="Mot de passe" hint="8 caractères minimum" counter @click:append="show1 = !show1"></v-text-field>
+                                            
+                                            <v-text-field v-model="loginPassword" :append-icon="show1?'eye':'eye-off'"  :rules="[rules.required, rules.min]" :type="show1 ? 'text' : 'password'" name="input-10-1" label="Mot de passe" hint="8 caractères minimum" counter @click:append="show1 = !show1"></v-text-field>
                                         </v-col>
                                         <v-col class="d-flex" cols="12" sm="6" xsm="12">
                                         </v-col>
                                         <v-spacer></v-spacer>
                                         <v-col class="d-flex" cols="12" sm="3" xsm="12" align-end>
-                                            <v-btn x-large block :disabled="!valid" color="success" @click="validate"> Se connecter </v-btn>
+                                            <v-btn x-large block :disabled="!valid" color="success" @click="checkConnection"> Se connecter </v-btn>
                                         </v-col>
                                     </v-row>
                                 </v-form>
@@ -44,7 +46,7 @@
                                             <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
                                         </v-col>
                                         <v-col cols="12">
-                                            <v-text-field v-model="email" :rules="emailRules" label="Adresse" required></v-text-field>
+                                            <v-text-field v-model="address" :rules="[rules.required]" label="Adresse" required></v-text-field>
                                         </v-col>
                                         <v-col cols="12" sm="6" md="6">
                                             <v-text-field v-model="password" :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'" :rules="[rules.required, rules.min]" :type="show1 ? 'text' : 'password'" name="input-10-1" label="Mot de passe" hint="At least 8 characters" counter @click:append="show1 = !show1"></v-text-field>
@@ -54,7 +56,7 @@
                                         </v-col>
                                         <v-spacer></v-spacer>
                                         <v-col class="d-flex ml-auto" cols="12" sm="3" xsm="12">
-                                            <v-btn x-large block :disabled="!valid" color="success" @click="validate">Envoyer</v-btn>
+                                            <v-btn x-large block :disabled="!valid" color="success" @click="reset">Envoyer</v-btn>
                                         </v-col>
                                     </v-row>
                                 </v-form>
@@ -74,7 +76,7 @@
                                         </v-card-title>
                                         <v-spacer></v-spacer>
                                         <v-col class="d-flex" cols="12" sm="3" xsm="12" align-end>
-                                            <v-btn x-large block :disabled="!valid" color="success" @click="validate"> Continuer </v-btn>
+                                            <v-btn x-large block :disabled="!valid" color="success" @click="checkConnection"> Continuer </v-btn>
                                         </v-col>
                                     </v-row>
                                 </v-form>
@@ -87,7 +89,10 @@
 </template>
 
 <script>
+// const fetch = require('node-fetch');
+
 export default {
+    
     computed: {
     passwordMatch() {
       return () => this.password === this.verify || "Password must match";
@@ -99,6 +104,19 @@ export default {
         // submit form to server/API here...
       }
     },
+    checkConnection : async function () {
+        let body = {
+            userEmail : this.loginEmail,
+            userPassword : this.loginPassword
+        }
+      fetch('http://localhost:3000/user/connection', {
+        method: 'post',
+        body:    JSON.stringify(body),
+        headers: { 'Content-Type': 'application/json' },
+    })
+    .then(res=> res.json())
+    .then(json => window.alert(json.message));
+  },
     reset() {
       this.$refs.form.reset();
     },
@@ -119,6 +137,7 @@ export default {
     firstName: "",
     lastName: "",
     email: "",
+    address: "",
     password: "",
     verify: "",
     loginPassword: "",
@@ -141,7 +160,4 @@ export default {
 }
 </script>
 <style>
-#pa-8{
-    text-align: center;
-}
 </style>

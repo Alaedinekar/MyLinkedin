@@ -106,6 +106,24 @@ const getUsersProjects = async (req,res) => {
     })
 }
 
+const connection = async (req,res) => {
+    const data = req.body;
+    await userModel.find({userEmail : data.userEmail})
+    .then(result => {
+        if(result.length > 0){
+            if(md5(data.userPassword) == result[0].userPassword){
+                res.status(200).send({message : `Great success ! ${result[0].userFirstName + " " + result[0].userLastName } is connected !`})
+            }else{
+                res.status(401).send({message : "Wrong password"})
+            }
+        }else{
+            res.status(401).send({message : "Wrong email"})
+        }
+    })
+    .catch(error => {
+        res.status(400).send({message : error.message})
+    })
+}
 module.exports = {
     newUser : newUser,
     getUsers : getUsers,
@@ -114,5 +132,6 @@ module.exports = {
     getUserById : getUserById,
     newSkill : newSkill,
     newUserProject : newUserProject,
-    getUsersProjects : getUsersProjects
+    getUsersProjects : getUsersProjects,
+    connection : connection
 }
