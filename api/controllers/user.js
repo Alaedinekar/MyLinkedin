@@ -6,9 +6,9 @@ const md5 = require('md5');
 
 const newUser = async (req,res) => {
     const data = req.body;
-    data.userName.toUpperCase();
     const newUser = new userModel({
-        userName : data.userName.toUpperCase(),
+        userFirstName : data.userFirstName.toUpperCase(),
+        userLastName : data.userLastName.toUpperCase(),
         userEmail : data.userEmail,
         userPassword : md5(data.userPassword),
         userPhoneNumber : data.userPhoneNumber,
@@ -112,7 +112,7 @@ const connection = async (req,res) => {
     .then(result => {
         if(result.length > 0){
             if(md5(data.userPassword) == result[0].userPassword){
-                res.status(200).send({message : `Great success ! ${result[0].userFirstName + " " + result[0].userLastName } is connected !`})
+                res.status(200).send({message : `Great success ! ${result[0].userFirstName + " " + result[0].userLastName } is connected !`, userId: result[0]._id})
             }else{
                 res.status(401).send({message : "Wrong password"})
             }

@@ -24,8 +24,7 @@
 
    
 <div v-if="this.users.length > 0">
-      
-    <v-card v-for="user in filterUsers" :key="user.userName" outlined tile elevation="2" class="pa-8">
+    <v-card v-for="user in filterUsers" :key="user.userName" outlined tile elevation="10" class="pa-8">
       <!-- <v-card elevation="2"> -->
         <v-card-title> <h2>{{user.userName}}</h2> </v-card-title>
         <v-card-subtitle> {{user.userEmail}} <br> {{user.userPhoneNumber}}</v-card-subtitle>
@@ -35,8 +34,7 @@
               <li>{{skill.skillName}}</li>
             </ul>
         </v-card-text>
-       <Pmap  :adress = "adress"   /> 
-     
+       <Pmap  :adress = "adress"   />
     </v-card>
 </div>
   </v-form>
@@ -127,6 +125,5 @@ export default {
 
 </script>
 
-<style>
-
+<style scoped>
 </style>

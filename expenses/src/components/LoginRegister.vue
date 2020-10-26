@@ -117,7 +117,17 @@ export default {
     })
     .then(res=> {
         if(res.ok){
-            this.$router.push({name : 'search'});
+            // this.$router.push({name : `user/${res.json()}`});
+            res.json().then(data => this.$router.replace({
+                name : `user`,
+                params: {
+                    idUser: data.userId
+                }
+            }));
+            // 
+        }else{
+            this.loginPassword = '';
+            alert('Wrong credentials');
         }
     })
   },
