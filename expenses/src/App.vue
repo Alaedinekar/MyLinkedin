@@ -2,8 +2,9 @@
   <v-app>
       
     <PHeader/>
-    <!--<component v-bind:is="component"></component>-->
-    <recherchePersonne></recherchePersonne>
+    <router-view/>
+    <component v-bind:is="component"></component>
+    <recherchePersonne/>
     <footer>
       <Pfoot/>
     </footer>
@@ -22,6 +23,15 @@
 
 export default {
   name: "App",
+  mounted(){
+    if(!this.authenticated) {
+                this.$router.replace({ name: "login" });
+
+            }else{
+                this.$router.replace({ name: "search" });
+                
+            }
+  },
   components: {
     "PHeader" : PHeader,
     //"Pmap" : Pmap,
@@ -31,7 +41,9 @@ export default {
   },
   data () {
     return {
-      //component : "LoginRegister"
+      component : "recherchePersonne",
+      authenticated : true,
+      userId : ''
     }
   }
 ,

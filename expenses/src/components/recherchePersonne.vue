@@ -51,6 +51,7 @@ import Pmap from "./Pmap";
 const fetch = require('node-fetch');
 export default {
   components:{Pmap},
+  name : "search",
   data() {
     // declare message with an empty value
     return{
