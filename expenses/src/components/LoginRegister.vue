@@ -23,8 +23,8 @@
                                         <v-col class="d-flex" cols="12" sm="6" xsm="12">
                                         </v-col>
                                         <v-spacer></v-spacer>
-                                        <v-col class="d-flex" cols="12" sm="3" xsm="12" align-end>
-                                            <v-btn x-large block :disabled="!valid" color="success" @click="checkConnection"> Se connecter </v-btn>
+                                        <v-col class="d-flex" cols="12" sm="4" xsm="12" align-end>
+                                            <v-btn x-large block :disabled="!valid" color="success" @click="checkConnection">Connexion</v-btn>
                                         </v-col>
                                     </v-row>
                                 </v-form>
@@ -89,10 +89,9 @@
 </template>
 
 <script>
-// const fetch = require('node-fetch');
 
 export default {
-    
+    name : "login",
     computed: {
     passwordMatch() {
       return () => this.password === this.verify || "Password must match";
@@ -114,8 +113,11 @@ export default {
         body:    JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' },
     })
-    .then(res=> res.json())
-    .then(json => window.alert(json.message));
+    .then(res=> {
+        if(res.ok){
+            this.$router.push('/search');
+        }
+    })
   },
     reset() {
       this.$refs.form.reset();

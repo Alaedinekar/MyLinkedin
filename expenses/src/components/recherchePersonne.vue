@@ -49,6 +49,7 @@
 
 const fetch = require('node-fetch');
 export default {
+  name : "search",
   data() {
     // declare message with an empty value
     return{
