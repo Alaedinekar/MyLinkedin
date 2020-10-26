@@ -2,7 +2,7 @@
     <div>
         
         <GmapMap
-            :center="myCoordinates"
+            :center= this.myCoordinates
             :zoom="zoom"
             style="width:640px; height:360px; margin: 32px auto;"
             ref="mapRef"
@@ -12,13 +12,14 @@
 </template>
 <script>
     export default {
+        props:['adress'],
         data() {
             return {
                 map: null,
-                myCoordinates: {
-                    lat: 0,
-                    lng: 0
-                },
+                 myCoordinates: {
+                     lat: adress.lat,
+                     lng: adress.lng
+                 },
                 zoom: 7
             }
         },

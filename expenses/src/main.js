@@ -14,7 +14,7 @@ Vue.use(VueGoogleMaps,{
   load:{
     key:'AIzaSyDQtfP3hdGPz588Tsx9ZgLluNkV2MrfjXU'
   },
-  installComponents: true
+  installComponents: false
 });
 
 

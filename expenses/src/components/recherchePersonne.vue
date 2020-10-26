@@ -24,7 +24,7 @@
 
    
 <div v-if="this.users.length > 0">
-
+      
     <v-card v-for="user in filterUsers" :key="user.userName" outlined tile elevation="2" class="pa-8">
       <!-- <v-card elevation="2"> -->
         <v-card-title> <h2>{{user.userName}}</h2> </v-card-title>
@@ -35,8 +35,8 @@
               <li>{{skill.skillName}}</li>
             </ul>
         </v-card-text>
-       <!--map/> -->
-      <!-- </v-card> -->
+       <Pmap  :adress = "adress"   /> 
+     
     </v-card>
 </div>
   </v-form>
@@ -45,17 +45,21 @@
 
 
 <script>
+import Pmap from "./Pmap";
 
 
 const fetch = require('node-fetch');
 export default {
+  components:{Pmap},
   data() {
     // declare message with an empty value
     return{
       users:{},
       prenom :'',
       nom : '',
-      skill : ''
+      skill : '',
+      adress :{lat:10,lng:10}
+      
     }
     
   },
@@ -64,16 +68,43 @@ export default {
     this.getData().then((result)=>{
       // console.log(result)
       this.users = result;
+      
+      
     });
   },
   // Pompé sur :  https://www.youtube.com/watch?v=G34_yNV8FMY
   computed: {
     filterUsers: function () {
       return this.users.filter((user) => {
-          return user.userName.match(this.prenom.toUpperCase());
+        if(user.userName != undefined){
+        return user.userName.match(this.prenom.toUpperCase());
+        }
+        
       });
-      // TODO la même chose sur les skills
+      
+    },
+    // filterUsersName: function () {
+    //   return this.users.filter((user) => {
+    //     if(user.userName != undefined){
+    //     return user.userName.match(this.nom.toUpperCase());
+    //     }
+        
+    //   });
+      
+    // },
+    filterSkill: function () {
+      return this.users.filter((user) => {
+        
+          console.log(user.skillsList.skillName)
+          return user.skillsList.skillName.match(this.skill.toUpperCase());
+        
+      });
     }
+    // },
+    // filterFinal: function(){
+    //     return filterUsers.filter(value => filterSkill.includes(value))
+    // }
+    
   },
   methods:{
     getData : async () => {
