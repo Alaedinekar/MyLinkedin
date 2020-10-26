@@ -71,12 +71,11 @@
                                         <v-card-title primary-title class="justify-center">
                                             <div>
                                                 <h3 class="headline black--text text--accent-2">Continuer en tant qu'invité ?</h3>
-                                                
                                             </div>
                                         </v-card-title>
                                         <v-spacer></v-spacer>
                                         <v-col class="d-flex" cols="12" sm="3" xsm="12" align-end>
-                                            <v-btn x-large block :disabled="!valid" color="success" @click="checkConnection"> Continuer </v-btn>
+                                            <v-btn x-large block :disabled="!valid" color="success" @click="guest"> Continuer </v-btn>
                                         </v-col>
                                     </v-row>
                                 </v-form>
@@ -103,6 +102,9 @@ export default {
         // submit form to server/API here...
       }
     },
+    guest() {
+        this.$router.push({name : 'search'});
+    },
     checkConnection : async function () {
         let body = {
             userEmail : this.loginEmail,
@@ -115,10 +117,13 @@ export default {
     })
     .then(res=> {
         if(res.ok){
-            this.$router.push('/search');
+            this.$router.push({name : 'search'});
         }
     })
   },
+    logout: function() {
+        //
+    },
     reset() {
       this.$refs.form.reset();
     },

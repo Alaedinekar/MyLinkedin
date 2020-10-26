@@ -3,8 +3,7 @@
       
     <PHeader/>
     <router-view/>
-    <component v-bind:is="component"></component>
-    <recherchePersonne/>
+    <!-- <recherchePersonne/> -->
     <footer>
       <Pfoot/>
     </footer>
@@ -16,7 +15,7 @@
 <script>
 
  import PHeader from "./components/PHeader";
- import recherchePersonne from "./components/recherchePersonne";
+//  import recherchePersonne from "./components/recherchePersonne";
  import Pfoot from "./components/Pfoot";
  //import LoginRegister from  "./components/LoginRegister";
 //import Pmap from "./components/Pmap";
@@ -35,14 +34,14 @@ export default {
   components: {
     "PHeader" : PHeader,
     //"Pmap" : Pmap,
-    "recherchePersonne" : recherchePersonne,
+    // "recherchePersonne" : recherchePersonne,
     "Pfoot" : Pfoot,
     //"LoginRegister" : LoginRegister
   },
   data () {
     return {
-      component : "recherchePersonne",
-      authenticated : true,
+      // component : "recherchePersonne",
+      authenticated : false,
       userId : ''
     }
   }
