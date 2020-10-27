@@ -13,7 +13,8 @@ const newUser = async (req,res) => {
         userPassword : md5(data.userPassword),
         userPhoneNumber : data.userPhoneNumber,
         userAddress : data.userAddress,
-        skillsList : data.skillsList
+        skillsList : data.skillsList,
+        linkList: data.linkList
     });
     await newUser.save()
     .then(data => {
@@ -94,7 +95,10 @@ const newUserProject = async (req,res) => {
         res.json({message : err.message});
     })
 }
-
+const emptyUser = async (req,res) => {
+    let obj = userModel.schema.paths;
+    res.send(Object.keys(obj));
+}
 const getUsersProjects = async (req,res) => {
     const userId = req.params.id;
     await projectModel.find({idOwner : userId})
@@ -133,5 +137,6 @@ module.exports = {
     newSkill : newSkill,
     newUserProject : newUserProject,
     getUsersProjects : getUsersProjects,
-    connection : connection
+    connection : connection,
+    emptyUser: emptyUser
 }

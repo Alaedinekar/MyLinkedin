@@ -7,6 +7,16 @@ const skillSchema = mongoose.Schema({
     }
 }
 );
+const LinkSchema = mongoose.Schema({
+    linkTarget : {
+        type : String,
+        required : true
+    },
+    URL : {
+        type : String,
+        required : true
+    }
+})
 const UserSchema = mongoose.Schema({
     userFirstName : {
         type : String,
@@ -32,7 +42,8 @@ const UserSchema = mongoose.Schema({
         type : String,
         required : true
     },
-    skillsList : [skillSchema]
+    skillsList : [skillSchema],
+    linkList: [LinkSchema]
 })
 
 module.exports = mongoose.model('Users', UserSchema);

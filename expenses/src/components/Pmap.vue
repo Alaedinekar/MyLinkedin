@@ -17,8 +17,8 @@
             return {
                 map: null,
                  myCoordinates: {
-                     lat: adress.lat,
-                     lng: adress.lng
+                    //  lat: adress.lat,
+                    //  lng: adress.lng
                  },
                 zoom: 7
             }

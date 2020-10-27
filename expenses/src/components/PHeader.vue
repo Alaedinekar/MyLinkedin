@@ -11,7 +11,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn icon>
+      <v-btn icon href="/">
         <v-icon>mdi-export</v-icon>
       </v-btn>
     </v-toolbar>

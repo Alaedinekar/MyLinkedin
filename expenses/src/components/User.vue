@@ -4,7 +4,7 @@
         <v-row>
           <v-col
             cols="12"
-            sm="3"
+            sm="2"
           >
           
             <v-card
@@ -31,7 +31,7 @@
 
           <v-col
             cols="12"
-            sm="9"       
+            sm="8"       
           >
           <!-- <v-container > -->
         <v-row>
@@ -56,7 +56,51 @@
             >
             </v-sheet> -->
           </v-col>
+          <v-col
+            cols="12"
+            sm="2"
+          >
+            <v-card
+              rounded="lg"
+              height="268"
+              elevation="5"
+              class="pa-4"
+            >
+            
+               <v-card
+              height="30%"
+              elevation="4"
+              class="ma-2"
+              color="#007bb5"
+              @click="getUserInfos"
+            >
+            <div class="a"><v-icon dark large>mdi-linkedin </v-icon> Linkedin</div>
+            
+            </v-card>
+            
+            <v-card
+              height="30%"
+              elevation="4"
+              class="ma-2"
+              color="#24292e"
+              @click="getUserInfos"
+              hover
+            >
+            <div class="a pa-2"><v-icon dark large>mdi-github </v-icon>GitHub </div>
+            </v-card>
+            <v-card
+              height="30%"
+              elevation="4"
+              class="ma-2 insta"
+              href=""
+              target="blank"
+            >
+            <div class="pa-2 a"><v-icon dark large>mdi-instagram </v-icon> Instagram</div>
+            </v-card>
+            </v-card>
+          </v-col>
         </v-row>
+         
       </v-container>
     </v-main>
     <!-- <v-main>
@@ -86,7 +130,8 @@
         return {
             userInfos: '',
             userId: '',
-            userProjects: {}
+            userProjects: {},
+            userLink: {}
         }
     },
     mounted: async function (){
@@ -100,6 +145,7 @@
             var jsonContent = await fetch(`http://localhost:3000/user/id/${this.$route.params.idUser}`);
             var json = await jsonContent.json();
             this.userInfos = json[0];
+            console.log(this.userInfos.linkList[0].URL);
         },
         getUserProjects: async function(){
             var jsonContent = await fetch(`http://localhost:3000/user/id/${this.userInfos._id}/projects`);
@@ -113,8 +159,21 @@
     }
   }
 </script>
-<style  scoped>
+<style lang="css" scoped>
 h3.capitalize{
     text-transform: capitalize;
 }
+.insta {
+  background: #f09433; 
+background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+}
+.a{
+  font-size: 16px;
+  color: aliceblue;
+  padding: 0.5em;
+  
+    }
 </style>
