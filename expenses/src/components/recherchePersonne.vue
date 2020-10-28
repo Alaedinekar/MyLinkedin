@@ -24,9 +24,9 @@
 
    
 <div v-if="this.users.length > 0">
-    <v-card v-for="user in filterUsers" :key="user.userName" outlined tile elevation="10" class="pa-8">
+    <v-card v-for="user in filterFinal" :key="user.userFirstName" outlined tile elevation="10" class="pa-8">
       <!-- <v-card elevation="2"> -->
-        <v-card-title> <h2>{{user.userName}}</h2> </v-card-title>
+        <v-card-title> <h2>{{user.userFirstName}}</h2> <h3>  {{user.userLastName}}</h3> </v-card-title>
         <v-card-subtitle> {{user.userEmail}} <br> {{user.userPhoneNumber}}</v-card-subtitle>
         <v-card-text>
           <h2>Skills List</h2>
@@ -34,7 +34,7 @@
               <li>{{skill.skillName}}</li>
             </ul>
         </v-card-text>
-       <Pmap  :adress = "adress"   />
+       <!--<Pmap  :adress = "adress"   />-->
     </v-card>
 </div>
   </v-form>
@@ -43,20 +43,20 @@
 
 
 <script>
-import Pmap from "./Pmap";
+//import Pmap from "./Pmap";
 
 
 const fetch = require('node-fetch');
 export default {
-  components:{Pmap},
+ // components:{Pmap},
   name : "search",
   data() {
     // declare message with an empty value
     return{
       users:{},
       prenom :'',
-      nom : '',
-      skill : '',
+      nom :'',
+      skill :'',
       adress :{lat:10,lng:10}
       
     }
@@ -73,38 +73,65 @@ export default {
   },
   // Pompé sur :  https://www.youtube.com/watch?v=G34_yNV8FMY
   computed: {
-    filterUsers: function () {
-      return this.users.filter((user) => {
-        if(user.userName != undefined){
-        return user.userName.match(this.prenom.toUpperCase());
+    filterUsersFirst: function () {
+      
+        return this.users.filter((user) => {
+        if(user.userFirstName != undefined){
+          return user.userFirstName.match(this.prenom.toUpperCase());
         }
         
       });
       
-    },
-    // filterUsersName: function () {
-    //   return this.users.filter((user) => {
-    //     if(user.userName != undefined){
-    //     return user.userName.match(this.nom.toUpperCase());
-    //     }
-        
-    //   });
       
-    // },
+    },
+     filterUsersName: function () {
+       if (this.nom !=''){
+       return this.users.filter((user) => {
+         if(user.userLastName != undefined){
+           
+         return user.userLastName.match(this.nom.toUpperCase());
+         }
+       });
+       }
+       return this.users
+     },
+
     filterSkill: function () {
-      return this.users.filter((user) => {
+      let lis = [];
+      lis = []
+        if(this.skill != ''){
+        this.users.forEach(user => {          
+        console.log(user)
         
-          console.log(user.skillsList.skillName)
-          return user.skillsList.skillName.match(this.skill.toUpperCase());
+          user.skillsList.forEach(element => {
+            if(element.skillName.match(this.skill.toUpperCase())){
+              console.log(user);
+              if(user)
+              lis.push(user);
+            }
+            
+          });
+          });
+          console.log(lis);
+          return lis;
         
-      });
-    }
-    // },
-    // filterFinal: function(){
-    //     return filterUsers.filter(value => filterSkill.includes(value))
-    // }
-    
+        }
+        return this.users;
+      
+    },
+     
+      filterFinal: function(){
+        var data = [this.filterSkill,this.filterUsersName,this.filterUsersFirst]
+        var res = data.reduce((a, b) => a.filter(c => b.includes(c)));
+        console.log(res)
+        return res
+
+        
+        }
+         
+      
   },
+  
   methods:{
     getData : async () => {
       var jsonContent = await fetch('http://localhost:3000/user');
