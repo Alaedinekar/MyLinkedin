@@ -14,7 +14,7 @@
             >
                 <v-img
                 rounded="lg"
-                src="https://vignette.wikia.nocookie.net/heros/images/a/a5/Winnie_l%27Ourson_Infobox.jpeg/revision/latest?cb=20200607154813&path-prefix=fr"
+                src="`${userInfos.picUrl}`"
                 ></v-img>
               <!--  -->
           <v-card-text>

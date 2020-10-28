@@ -113,6 +113,7 @@ export default {
             userAddress : this.address,
             userPassword: this.password,
             userPhoneNumber: this.phone,
+            picUrl: this.picUrl,
             skillsList: [],
             linkList: []
         }
