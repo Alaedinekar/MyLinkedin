@@ -34,7 +34,7 @@
                     <v-tab-item>
                         <v-card class="px-4">
                             <v-card-text>
-                                <v-form ref="registerForm" v-model="valid" lazy-validation>
+                                <v-form ref="registerForm" v-model="valid"  lazy-validation>
                                     <v-row>
                                         <v-col cols="12" sm="6" md="6">
                                             <v-text-field v-model="firstName" :rules="[rules.required]" label="Nom" maxlength="20" required></v-text-field>
@@ -42,8 +42,11 @@
                                         <v-col cols="12" sm="6" md="6">
                                             <v-text-field v-model="lastName" :rules="[rules.required]" label="Prénom" maxlength="20" required></v-text-field>
                                         </v-col>
-                                        <v-col cols="12">
+                                        <v-col cols="12" sm="6" md="6">
                                             <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
+                                        </v-col>
+                                        <v-col cols="12" sm="6" md="6">
+                                            <v-text-field v-model="phone"  label="Numéro de Téléphone" required></v-text-field>
                                         </v-col>
                                         <v-col cols="12">
                                             <v-text-field v-model="address" :rules="[rules.required]" label="Adresse" required></v-text-field>
@@ -56,7 +59,7 @@
                                         </v-col>
                                         <v-spacer></v-spacer>
                                         <v-col class="d-flex ml-auto" cols="12" sm="3" xsm="12">
-                                            <v-btn x-large block :disabled="!valid" color="success" @click="reset">Envoyer</v-btn>
+                                            <v-btn x-large block :disabled="!valid" color="success" @click="register">Envoyer</v-btn>
                                         </v-col>
                                     </v-row>
                                 </v-form>
@@ -75,6 +78,7 @@
                                         </v-card-title>
                                         <v-spacer></v-spacer>
                                         <v-col class="d-flex" cols="12" sm="3" xsm="12" align-end>
+
                                             <v-btn x-large block :disabled="!valid" color="success" @click="guest"> Continuer </v-btn>
                                         </v-col>
                                     </v-row>
@@ -88,7 +92,6 @@
 </template>
 
 <script>
-
 export default {
     name : "login",
     computed: {
@@ -101,6 +104,47 @@ export default {
       if (this.$refs.loginForm.validate()) {
         // submit form to server/API here...
       }
+    },
+    register: async function() {
+        let body = {
+            userFirstName : this.firstName,
+            userLastName : this.lastName,
+            userEmail : this.email,
+            userAddress : this.address,
+            userPassword: this.password,
+            userPhoneNumber: this.phone,
+            skillsList: [],
+            linkList: []
+        }
+        fetch('http://localhost:3000/user/isAlreadyRegistered', {
+            method: 'post',
+            body:    JSON.stringify(body),
+            headers: { 'Content-Type': 'application/json' },
+        })
+        .then(res => {
+            // if(res.status == 200){
+            //     this.$router.push({name : 'search'});
+            // }else{
+            //     alert('noooon');
+            // }
+            if(res.status == 200){
+                fetch('http://localhost:3000/user/addUser', {
+                    method: 'post',
+                    body:    JSON.stringify(body),
+                    headers: { 'Content-Type': 'application/json' },
+                });
+                alert(`Utilisateur ${this.firstName + " " + this.lastName} ajouté avec succès !`);
+               this.$refs.registerForm.reset();
+               this.$router.go("/");
+            }else if(res.status == 403){
+                alert('Deja inscrit');
+                this.$refs.registerForm.reset();
+                this.$router.go("/");
+
+
+            }
+        })
+        
     },
     guest() {
         this.$router.push({name : 'search'});
@@ -154,6 +198,7 @@ export default {
     firstName: "",
     lastName: "",
     email: "",
+    phone: "",
     address: "",
     password: "",
     verify: "",

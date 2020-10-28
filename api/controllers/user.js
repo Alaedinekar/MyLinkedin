@@ -21,7 +21,7 @@ const newUser = async (req,res) => {
         res.json({message: "Sucess, correctly added to the dataBASE"});
     })
     .catch(err => {
-        res.json({message : err.message});
+        res.status(400).json({message : err.message});
     })
 }
 
@@ -39,6 +39,16 @@ const getUserByName = async (req,res) => {
     await userModel.find({userName : name})
     .then(rslt => {
         rslt.length ? res.status(200).json(rslt) : res.status(200).json({erreur : "Utilisateur inconnu ...."})
+    })
+    .catch(err => {
+        res.status(400).send({message : err.message});
+    })
+}
+const isAlreadyRegistered = async (req,res) => {
+    const body = req.body;
+    await userModel.find({userEmail : body.userEmail})
+    .then(rslt => {
+        rslt.length ? res.status(403).json({erreur: "Déjà inscrit..."}) : res.status(200).json({erreur : "Tu peux entrer akhi"})
     })
     .catch(err => {
         res.status(400).send({message : err.message});
@@ -138,5 +148,6 @@ module.exports = {
     newUserProject : newUserProject,
     getUsersProjects : getUsersProjects,
     connection : connection,
-    emptyUser: emptyUser
+    emptyUser: emptyUser,
+    isAlreadyRegistered: isAlreadyRegistered
 }
