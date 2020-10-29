@@ -123,8 +123,9 @@ export default {
       filterFinal: function(){
         var data = [this.filterSkill,this.filterUsersName,this.filterUsersFirst]
         var res = data.reduce((a, b) => a.filter(c => b.includes(c)));
-        console.log(res)
-        return res
+        //console.log(res)
+        var res2 = res.filter((item,index)=> res.indexOf(item)==index);//jenleve les doublons
+        return res2
 
         
         }
