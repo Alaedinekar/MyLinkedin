@@ -26,7 +26,7 @@
 <div v-if="this.users.length > 0">
     <v-card v-for="user in filterFinal" :key="user.userFirstName" outlined tile elevation="10" class="pa-8">
       <!-- <v-card elevation="2"> -->
-        <v-card-title> <h2>{{user.userFirstName}}</h2> <h3>  {{user.userLastName}}</h3> </v-card-title>
+        <v-card-title> <h2>{{user.userFirstName}}</h2> <h3>  <i>{{user.userLastName}}</i></h3> </v-card-title>
         <v-card-subtitle> {{user.userEmail}} <br> {{user.userPhoneNumber}}</v-card-subtitle>
         <v-card-text>
           <h2>Skills List</h2>
@@ -74,14 +74,15 @@ export default {
   // Pompé sur :  https://www.youtube.com/watch?v=G34_yNV8FMY
   computed: {
     filterUsersFirst: function () {
-      
+        if (this.prenom !=''){
         return this.users.filter((user) => {
         if(user.userFirstName != undefined){
           return user.userFirstName.match(this.prenom.toUpperCase());
         }
         
       });
-      
+        }
+        return this.users;
       
     },
      filterUsersName: function () {
@@ -101,18 +102,16 @@ export default {
       lis = []
         if(this.skill != ''){
         this.users.forEach(user => {          
-        console.log(user)
+        
         
           user.skillsList.forEach(element => {
             if(element.skillName.match(this.skill.toUpperCase())){
-              console.log(user);
-              if(user)
-              lis.push(user);
+            lis.push(user);
             }
             
           });
           });
-          console.log(lis);
+          //console.log(lis);
           return lis;
         
         }
@@ -121,11 +120,11 @@ export default {
     },
      
       filterFinal: function(){
-        var data = [this.filterSkill,this.filterUsersName,this.filterUsersFirst]
+        var data = [this.filterSkill,this.filterUsersName,this.filterUsersFirst];
         var res = data.reduce((a, b) => a.filter(c => b.includes(c)));
         //console.log(res)
-        var res2 = res.filter((item,index)=> res.indexOf(item)==index);//jenleve les doublons
-        return res2
+        var res2 = res.filter((item,index)=> res.indexOf(item)==index);//j'enleve les doublons
+        return res2;
 
         
         }

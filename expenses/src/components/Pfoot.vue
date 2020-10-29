@@ -22,12 +22,5 @@
 </script>
 
 <style>
-#footer {
-   /* position:fixed;
-   left:0px;
-   bottom:0px;
-   height:10px;
-   width:100%;
-   background:#999; */
-}
+
 </style>
