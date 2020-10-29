@@ -14,7 +14,7 @@
             >
                 <v-img
                 rounded="lg"
-                src="`${userInfos.picUrl}`"
+                :src="`${userInfos.picUrl}`"
                 ></v-img>
               <!--  -->
           <v-card-text>
