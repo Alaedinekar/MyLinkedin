@@ -24,8 +24,9 @@
 
    
 <div v-if="this.users.length > 0">
-    <v-card v-for="user in filterFinal" :key="user.userFirstName" outlined tile elevation="10" class="pa-8">
+    <v-card v-for="user in filterFinal" :key="user._id" outlined tile elevation="10" class="pa-8">
       <!-- <v-card elevation="2"> -->
+        <v-icon x-large right  @click="goToUserPage" :id="user._id" style="cursor: pointer">mdi-account-cowboy-hat</v-icon>
         <v-card-title> <h2>{{user.userFirstName}}</h2> <h3>  <i>{{user.userLastName}}</i></h3> </v-card-title>
         <v-card-subtitle> {{user.userEmail}} <br> {{user.userPhoneNumber}}</v-card-subtitle>
         <v-card-text>
@@ -133,6 +134,15 @@ export default {
   },
   
   methods:{
+    
+    goToUserPage: function (event){
+      this.$router.replace({
+                name : `user`,
+                params: {
+                    idUser: event.target.id
+                }
+            })
+    },
     getData : async () => {
       var jsonContent = await fetch('http://localhost:3000/user');
       var json = await jsonContent.json();
