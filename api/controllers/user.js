@@ -14,7 +14,8 @@ const newUser = async (req,res) => {
         userPhoneNumber : data.userPhoneNumber,
         userAddress : data.userAddress,
         skillsList : data.skillsList,
-        linkList: data.linkList
+        linkList: data.linkList,
+        location: data.location
     });
     await newUser.save()
     .then(data => {

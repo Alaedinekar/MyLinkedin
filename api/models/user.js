@@ -17,6 +17,16 @@ const LinkSchema = mongoose.Schema({
         required : true
     }
 })
+const LocationSchema = mongoose.Schema({
+    longitude : {
+        type : Number,
+        required : false
+    },
+    latitude : {
+        type : Number,
+        required : false
+    }
+})
 const UserSchema = mongoose.Schema({
     userFirstName : {
         type : String,
@@ -47,8 +57,10 @@ const UserSchema = mongoose.Schema({
         required: false,
         default: "https://vignette.wikia.nocookie.net/heros/images/a/a5/Winnie_l%27Ourson_Infobox.jpeg/revision/latest?cb=20200607154813&path-prefix=fr"
     },
+    location: LocationSchema,
     skillsList : [skillSchema],
     linkList: [LinkSchema]
+
 })
 
 module.exports = mongoose.model('Users', UserSchema);

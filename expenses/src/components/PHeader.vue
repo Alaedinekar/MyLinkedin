@@ -5,7 +5,7 @@
       prominent
       src="https://preview.redd.it/4qy94g1lum941.png?auto=webp&s=4f4357cec35ea1457be88e7df680c2c3e79c1059"
     >
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      
 
       <v-toolbar-title>Projet Blue Beam</v-toolbar-title>
 

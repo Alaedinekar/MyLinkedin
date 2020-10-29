@@ -115,7 +115,11 @@ export default {
             userPhoneNumber: this.phone,
             picUrl: this.picUrl,
             skillsList: [],
-            linkList: []
+            linkList: [],
+            location: {
+                longitude: 0.0,
+                latitude: 0.0
+            }
         }
         fetch('http://localhost:3000/user/isAlreadyRegistered', {
             method: 'post',
