@@ -159,13 +159,14 @@
             string = string.toLowerCase();
             return string.charAt(0).toUpperCase() + string.slice(1);
         },
+        
         addSkill : async function () {
         let body = {
-            skillName : this.skillName,
+            skillName : this.skillName.toUpperCase(),
             }
         fetch('http://localhost:3000/user/id/${this.userId}/addSkill',{
         method: 'post',
-        body:    JSON.stringify(body).toUpperCase(),
+        body:    JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' },
     })
     .then(res=> {

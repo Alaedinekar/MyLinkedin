@@ -75,12 +75,16 @@ const getUserById = async (req,res) => {
         res.status(400).send({message : err.message});
     })
 }
+
 const newSkill = async (req,res) => {
-     const id = req.params.id;
-     let skill = {skillName : req.body.skillName};
-     let newData = {$push : {skillsList : skill}};
-     await userModel.findByIdAndUpdate(id, newData, (err, doc) => {
-          res.send(doc);
+    const id = req.params.id;
+    let skill = {skillName : req.body.skillName};
+    let newData = {$push : {skillsList : skill}};
+    //console.log(newData)
+    await userModel.findByIdAndUpdate(id, newData, (err, doc) => {
+    res.send(doc);
+    //TODO
+    console.log(doc)// undefined    
      })  
 }
 
