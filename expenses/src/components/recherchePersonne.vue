@@ -94,7 +94,7 @@ export default {
          }
        });
        }
-       return this.users
+       return this.users;
      },
 
     filterSkill: function () {
@@ -111,7 +111,6 @@ export default {
             
           });
           });
-          //console.log(lis);
           return lis;
         
         }

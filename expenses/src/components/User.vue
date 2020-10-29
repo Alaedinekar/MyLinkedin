@@ -27,6 +27,8 @@
           </v-card-text>
                
             </v-card>
+            <input v-model="skillName" placeholder="skill">
+            <button @click="addSkill">ajoutez</button>
           </v-col>
 
           <v-col
@@ -131,7 +133,8 @@
             userInfos: '',
             userId: '',
             userProjects: {},
-            userLink: {}
+            userLink: {},
+            skillName :''
         }
     },
     mounted: async function (){
@@ -155,8 +158,28 @@
         capitalizeFirstLetter: function(string) {
             string = string.toLowerCase();
             return string.charAt(0).toUpperCase() + string.slice(1);
+        },
+        addSkill : async function () {
+        let body = {
+            skillName : this.skillName,
+            }
+        fetch('http://localhost:3000/user/id/${this.userId}/addSkill',{
+        method: 'post',
+        body:    JSON.stringify(body).toUpperCase(),
+        headers: { 'Content-Type': 'application/json' },
+    })
+    .then(res=> {
+        if(res.ok){
+          
+            this.skillName = '';
+            
         }
-    }
+            });
+            // 
+       
+    
+  }
+    },
   }
 </script>
 <style lang="css" scoped>

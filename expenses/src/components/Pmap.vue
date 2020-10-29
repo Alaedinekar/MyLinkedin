@@ -2,7 +2,7 @@
     <div>
         
         <GmapMap
-            :center= this.myCoordinates
+            :center= "myCoordinates"
             :zoom="zoom"
             style="width:640px; height:360px; margin: 32px auto;"
             ref="mapRef"
@@ -44,18 +44,7 @@
             // add the map to a data object
             this.$refs.mapRef.$mapPromise.then(map => this.map = map);
         },
-        methods: {
-            handleDrag() {
-                // get center and zoom level, store in localstorage
-                let center = {
-                    lat: this.map.getCenter().lat(),
-                    lng: this.map.getCenter().lng()
-                };
-                let zoom = this.map.getZoom();
-                localStorage.center = JSON.stringify(center);
-                localStorage.zoom = zoom;
-            }
-        },
+        
         computed: {
             mapCoordinates() {
                 if(!this.map) {
