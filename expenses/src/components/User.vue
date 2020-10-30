@@ -43,13 +43,16 @@
           <!-- <v-container > -->
         <v-row>
             <v-col cols="0" >
+              
+            <v-card outlined tile elevation="5" height="200px">
               <v-card-text>
-          <h2>Skills List</h2>
+          <h2>Liste des competences</h2>
             <ul v-for="skill in this.skillListe" :key="skill.id">
               <li>{{skill.skillName}}</li>
             </ul>
         </v-card-text>
-            <v-card outlined tile elevation="5" height="200px"></v-card>
+            </v-card>
+            
             </v-col>
         </v-row>
             <v-row>
