@@ -29,6 +29,10 @@
             </v-card>
             <input v-model="skillName" placeholder="skill">
             <button @click="addSkill">ajoutez</button>
+            <v-spacer></v-spacer>
+            <v-flex>
+              <ProjectFormPopup v-bind:idUser="userInfos._id"/>
+            </v-flex>
           </v-col>
 
           <v-col
@@ -126,8 +130,11 @@
 </template>
 
 <script>
+import ProjectFormPopup from './ProjectFormPopup'
   export default {
+    components : { ProjectFormPopup },
       name: 'user',
+      
     data(){
         return {
             userInfos: '',
@@ -148,7 +155,6 @@
             var jsonContent = await fetch(`http://localhost:3000/user/id/${this.$route.params.idUser}`);
             var json = await jsonContent.json();
             this.userInfos = json[0];
-            console.log(this.userInfos.linkList[0].URL);
         },
         getUserProjects: async function(){
             var jsonContent = await fetch(`http://localhost:3000/user/id/${this.userInfos._id}/projects`);
