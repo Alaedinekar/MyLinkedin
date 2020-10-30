@@ -27,11 +27,12 @@
           </v-card-text>
                
             </v-card>
-            <input v-model="skillName" placeholder="skill">
-            <button @click="addSkill">ajoutez</button>
+            
             <v-spacer></v-spacer>
             <v-flex>
+              <SkillFormPopup v-bind:idUser="userInfos._id"/>
               <ProjectFormPopup v-bind:idUser="userInfos._id"/>
+
             </v-flex>
           </v-col>
 
@@ -131,8 +132,9 @@
 
 <script>
 import ProjectFormPopup from './ProjectFormPopup'
+import SkillFormPopup from './SkillFormPopup'
   export default {
-    components : { ProjectFormPopup },
+    components : { ProjectFormPopup,SkillFormPopup },
       name: 'user',
       
     data(){
@@ -166,26 +168,7 @@ import ProjectFormPopup from './ProjectFormPopup'
             return string.charAt(0).toUpperCase() + string.slice(1);
         },
         
-        addSkill : async function () {
-        let body = {
-            skillName : this.skillName.toUpperCase(),
-            }
-        fetch('http://localhost:3000/user/id/${this.userId}/addSkill',{
-        method: 'post',
-        body:    JSON.stringify(body),
-        headers: { 'Content-Type': 'application/json' },
-    })
-    .then(res=> {
-        if(res.ok){
-          
-            this.skillName = '';
-            
-        }
-            });
-            // 
        
-    
-  }
     },
   }
 </script>
