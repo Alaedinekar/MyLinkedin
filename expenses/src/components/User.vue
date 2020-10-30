@@ -5,6 +5,7 @@
           <v-col
             cols="12"
             sm="2"
+            
           >
           
             <v-card
@@ -42,9 +43,9 @@
           >
           <!-- <v-container > -->
         <v-row>
-            <v-col cols="0" >
+            <v-col cols="0">
               
-            <v-card outlined tile elevation="5" height="200px">
+            <v-card outlined tile elevation="5" height="100%">
               <v-card-text>
           <h2>Liste des competences</h2>
             <ul v-for="skill in this.skillListe" :key="skill.id">

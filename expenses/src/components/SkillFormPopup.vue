@@ -5,7 +5,8 @@
       persistent
       max-width="60%"
     >
-      <template v-slot:activator="{ on, attrs }">
+      <template v-slot:activator="{ on, attrs }" 
+          max-height="30%">
         <v-btn
           color="blue"
           dark
