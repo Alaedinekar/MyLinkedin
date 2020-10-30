@@ -29,9 +29,9 @@
             </v-card>
             
             <v-spacer></v-spacer>
-            <v-flex>
-              <SkillFormPopup v-bind:idUser="userInfos._id"/>
-              <ProjectFormPopup v-bind:idUser="userInfos._id"/>
+            <v-flex class="pa-2">
+              <SkillFormPopup v-bind:idUser="userInfos._id" class="pa-2"/>
+              <ProjectFormPopup v-bind:idUser="userInfos._id" class="pa-2"/>
 
             </v-flex>
           </v-col>
