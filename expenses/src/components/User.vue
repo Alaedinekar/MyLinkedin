@@ -61,7 +61,12 @@
             :key="proj.id"
             cols="4"
           >
-            <v-card height="200" elevation="5"></v-card>
+            <v-card height="200" elevation="5">
+              <h4>{{proj.projectName}}</h4>
+              <p> {{proj.longDescription}}</p>
+              <p> Language utilisé : </p> <ul v-for="skill in proj.languagesInvolved" :key="skill.id">
+              <li>{{skill.skillName}}</li></ul>
+            </v-card>
           </v-col>
         </v-row>
       <!-- </v-container> -->
