@@ -43,7 +43,12 @@
           <!-- <v-container > -->
         <v-row>
             <v-col cols="0" >
-              
+              <v-card-text>
+          <h2>Skills List</h2>
+            <ul v-for="skill in this.skillListe" :key="skill.id">
+              <li>{{skill.skillName}}</li>
+            </ul>
+        </v-card-text>
             <v-card outlined tile elevation="5" height="200px"></v-card>
             </v-col>
         </v-row>
@@ -140,24 +145,36 @@ import SkillFormPopup from './SkillFormPopup'
     data(){
         return {
             userInfos: '',
+           
             userId: '',
             userProjects: {},
             userLink: {},
-            skillName :''
+            skillName :'',
+            skillListe:[]
         }
     },
     mounted: async function (){
         await this.getUserInfos();
         await this.getUserProjects();
+       
         this.userInfos.userFirstName = this.capitalizeFirstLetter(this.userInfos.userFirstName);
+        this.skillListe = this.userInfos.skillsList;
+        this.listProject = this.userProjects;
+        console.log(this.listProject);
+        //this.userLink = this.userInfos.linkList
+        
+        
         
     },
     methods: {
         getUserInfos: async function (){
+           
             var jsonContent = await fetch(`http://localhost:3000/user/id/${this.$route.params.idUser}`);
             var json = await jsonContent.json();
             this.userInfos = json[0];
+            
         },
+        
         getUserProjects: async function(){
             var jsonContent = await fetch(`http://localhost:3000/user/id/${this.userInfos._id}/projects`);
             var json = await jsonContent.json();
@@ -170,7 +187,9 @@ import SkillFormPopup from './SkillFormPopup'
         
        
     },
+    
   }
+   
 </script>
 <style lang="css" scoped>
 h3.capitalize{
