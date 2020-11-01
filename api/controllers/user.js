@@ -143,6 +143,15 @@ const connection = async (req,res) => {
         res.status(400).send({message : error.message})
     })
 }
+
+const setUserPicture = async (req,res) => {
+    const idUser = req.params.id;
+    const data = req.body;
+    console.log(data.picUrl)
+    await userModel.findOneAndUpdate({_id : idUser}, {picUrl : data.picUrl}, (err, rslt) => {
+            res.send({message : "Succesfully updated"})
+    })
+}
 module.exports = {
     newUser : newUser,
     getUsers : getUsers,
@@ -154,5 +163,6 @@ module.exports = {
     getUsersProjects : getUsersProjects,
     connection : connection,
     emptyUser: emptyUser,
-    isAlreadyRegistered: isAlreadyRegistered
+    isAlreadyRegistered: isAlreadyRegistered,
+    setUserPicture : setUserPicture
 }
