@@ -33,6 +33,7 @@
             <v-flex class="pa-2">
               <SkillFormPopup v-bind:idUser="userInfos._id" class="pa-2"/>
               <ProjectFormPopup v-bind:idUser="userInfos._id" class="pa-2"/>
+              <Pmap/>
 
             </v-flex>
           </v-col>
@@ -121,6 +122,7 @@
             </v-card>
           </v-col>
         </v-row>
+        
          
       </v-container>
     </v-main>
@@ -147,8 +149,9 @@
 <script>
 import ProjectFormPopup from './ProjectFormPopup'
 import SkillFormPopup from './SkillFormPopup'
+import Pmap from './Pmap'
   export default {
-    components : { ProjectFormPopup,SkillFormPopup },
+    components : { ProjectFormPopup,SkillFormPopup,Pmap},
       name: 'user',
       
     data(){
