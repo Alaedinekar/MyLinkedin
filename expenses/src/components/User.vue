@@ -33,7 +33,7 @@
             <v-flex class="pa-2">
               <SkillFormPopup v-bind:idUser="userInfos._id" class="pa-2"/>
               <ProjectFormPopup v-bind:idUser="userInfos._id" class="pa-2"/>
-              <Pmap/>
+              
               <PictureForm v-bind:idUser="userInfos._id" class="pa-2"/>
 
             </v-flex>
@@ -43,6 +43,7 @@
             cols="12"
             sm="8"       
           >
+          <Pmap/>
           <!-- <v-container > -->
         <v-row>
             <v-col cols="0">
