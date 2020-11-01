@@ -33,6 +33,7 @@
             <v-flex class="pa-2">
               <SkillFormPopup v-bind:idUser="userInfos._id" class="pa-2"/>
               <ProjectFormPopup v-bind:idUser="userInfos._id" class="pa-2"/>
+              <PictureForm v-bind:idUser="userInfos._id" class="pa-2"/>
 
             </v-flex>
           </v-col>
@@ -60,13 +61,41 @@
           <v-col
             v-for="proj in userProjects"
             :key="proj.id"
-            cols="4"
+            cols="6"
+            rounded="lg"
           >
-            <v-card height="200" elevation="5">
-              <h4>{{proj.projectName}}</h4>
-              <p> {{proj.longDescription}}</p>
-              <p> Language utilisé : </p> <ul v-for="skill in proj.languagesInvolved" :key="skill.id">
-              <li>{{skill.skillName}}</li></ul>
+          <v-toolbar class="brown" >
+            <!-- <v-spacer></v-spacer> -->
+							<v-toolbar-title>{{proj.projectName}}</v-toolbar-title>
+
+					</v-toolbar>
+            <v-card elevation="5" class="pa-5">
+              <p> {{proj.shortDescription}}</p>
+              <hr>
+              <p> Language utilisé : </p>
+              <ul v-for="skill in proj.languagesInvolved" :key="skill.id">
+                <li>
+                  {{skill.skillName}}
+                </li>
+              </ul>
+              <v-btn
+                icon
+                @click="show = !show"
+              >
+              <v-tooltip bottom></v-tooltip>
+              <v-icon >{{ show ? 'mdi-minus' : 'mdi-plus' }}</v-icon>
+              {{show ? "Moins" : "Plus"}}
+              </v-btn>
+
+                <v-expand-transition>
+              <div v-show="show">
+                <v-divider></v-divider>
+                  {{proj.longDescription}}
+                <v-card-text>
+                 
+                </v-card-text>
+              </div>
+            </v-expand-transition>
             </v-card>
           </v-col>
         </v-row>
@@ -147,12 +176,14 @@
 <script>
 import ProjectFormPopup from './ProjectFormPopup'
 import SkillFormPopup from './SkillFormPopup'
+import PictureForm from './PictureForm'
   export default {
-    components : { ProjectFormPopup,SkillFormPopup },
+    components : { ProjectFormPopup, SkillFormPopup, PictureForm },
       name: 'user',
       
     data(){
         return {
+          show: false,
             userInfos: '',
            
             userId: '',
@@ -183,7 +214,6 @@ import SkillFormPopup from './SkillFormPopup'
             this.userInfos = json[0];
             
         },
-        
         getUserProjects: async function(){
             var jsonContent = await fetch(`http://localhost:3000/user/id/${this.userInfos._id}/projects`);
             var json = await jsonContent.json();
