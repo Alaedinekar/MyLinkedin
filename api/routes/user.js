@@ -17,6 +17,9 @@ router.get('/id/:id/projects', userController.getUsersProjects);
 router.get('/skill/:skillName', userController.getBySkill);
 router.get('/example', userController.emptyUser);
 
+//
+router.patch('/id/:id/setPic', userController.setUserPicture);
+
 
 
 
