@@ -1,16 +1,30 @@
 <template>
+  <div class="text-center">
+    <v-dialog
+      v-model="dialog"
+      width="500"
+    >
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          color="red lighten-2"
+          dark
+          v-bind="attrs"
+          v-on="on"
+        >
+          Carte
+        </v-btn>
+      </template>
 
-  <div style="height: 500px; width: 100%">
-    <div style="height: 200px overflow: auto;">
-      <!-- <p>First marker is placed at {{ withPopup.lat }}, {{ withPopup.lng }}</p>
-      <p>Center is at {{ currentCenter }} and the zoom is: {{ currentZoom }}</p> -->
-      <button @click="showLongText">
-        Toggle long popup
-      </button>
-      <button @click="showMap = !showMap">
-        Toggle map
-      </button>
-    </div>
+      <v-card>
+        <v-card-title class="headline grey lighten-2">
+          Carte
+        </v-card-title>
+        
+
+<template>
+
+  <div style="height: 300px; width: 100%">
+    
     <l-map
       v-if="showMap"
       :zoom="zoom"
@@ -52,12 +66,36 @@
   </div>
 </template>
 
+        
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="primary"
+            text
+            @click="dialog = false"
+          >
+            I accept
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </div>
+</template>
+
+
+
+
+
+
 <script>
 import { latLng } from "leaflet";
 import { LMap, LTileLayer, LMarker, LPopup, LTooltip } from "vue2-leaflet";
 
 export default {
-  name: "Example",
+  name: "Pmap",
+  props:[],
   components: {
     LMap,
     LTileLayer,
