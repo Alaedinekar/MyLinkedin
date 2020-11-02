@@ -3,6 +3,10 @@ import VueRouter from 'vue-router';
 import SearchComponent from '../components/recherchePersonne.vue'
 import LoginComponent from '../components/LoginRegister.vue'
 import UserComponent from '../components/User.vue'
+// Packages import
+import VueSession from 'vue-session'
+
+Vue.use(VueSession)
 
 Vue.use(VueRouter);
 

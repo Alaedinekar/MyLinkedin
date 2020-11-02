@@ -92,14 +92,22 @@
 </template>
 
 <script>
+
 export default {
     name : "login",
+    mounted(){
+        console.log(this.$session)
+        this.local();
+    },
     computed: {
     passwordMatch() {
       return () => this.password === this.verify || "Password must match";
     }
   },
   methods: {
+      local: () => {
+          console.log(localStorage)
+      },
     validate() {
       if (this.$refs.loginForm.validate()) {
         // submit form to server/API here...

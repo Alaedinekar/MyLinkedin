@@ -20,6 +20,7 @@
  //import LoginRegister from  "./components/LoginRegister";
 //import Pmap from "./components/Pmap";
 
+
 export default {
   name: "App",
   mounted(){

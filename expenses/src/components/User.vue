@@ -4,7 +4,7 @@
         <v-row>
           <v-col
             cols="12"
-            sm="2"
+            sm="3"
             
           >
           
@@ -41,7 +41,7 @@
 
           <v-col
             cols="12"
-            sm="8"       
+            sm="7"       
           >
           <Pmap/>
           <!-- <v-container > -->
@@ -177,10 +177,13 @@
 </template>
 
 <script>
+// Popup Import
 import ProjectFormPopup from './ProjectFormPopup'
 import SkillFormPopup from './SkillFormPopup'
 import Pmap from './Pmap'  
 import PictureForm from './PictureForm'
+
+
 
   export default {
     components : { ProjectFormPopup, SkillFormPopup, PictureForm,Pmap },
