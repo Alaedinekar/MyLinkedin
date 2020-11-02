@@ -11,8 +11,9 @@
           dark
           v-bind="attrs"
           v-on="on"
+          width="80%"
         >
-          Ajouter un projet
+          Nouveau projet
         </v-btn>
       </template>
       <v-form ref="registerForm"  lazy-validation>

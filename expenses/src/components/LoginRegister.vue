@@ -96,8 +96,14 @@
 export default {
     name : "login",
     mounted(){
-        console.log(this.$session)
-        this.local();
+        if(this.$session.get("userId")){
+            this.$router.replace({
+                name : `user`,
+                params: {
+                    idUser: this.$session.get("userId")
+                }
+            });
+        }
     },
     computed: {
     passwordMatch() {
@@ -105,13 +111,13 @@ export default {
     }
   },
   methods: {
-      local: () => {
-          console.log(localStorage)
-      },
     validate() {
       if (this.$refs.loginForm.validate()) {
         // submit form to server/API here...
       }
+    },
+    isAlreadyLogged : () => {
+        //
     },
     register: async function() {
         let body = {
@@ -175,12 +181,18 @@ export default {
     .then(res=> {
         if(res.ok){
             // this.$router.push({name : `user/${res.json()}`});
-            res.json().then(data => this.$router.replace({
+            
+            res.json().then(data => {
+                this.$session.start();
+                this.$session.set("userId", data.userId);
+                this.$router.replace({
                 name : `user`,
                 params: {
                     idUser: data.userId
                 }
-            }));
+            });
+            }
+            );
             // 
         }else{
             this.loginPassword = '';
@@ -188,9 +200,6 @@ export default {
         }
     })
   },
-    logout: function() {
-        //
-    },
     reset() {
       this.$refs.form.reset();
     },

@@ -12,6 +12,7 @@
           dark
           v-bind="attrs"
           v-on="on"
+          width="80%"
         >
           Modifier ma photo
         </v-btn>

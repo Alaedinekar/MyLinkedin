@@ -12,8 +12,9 @@
           dark
           v-bind="attrs"
           v-on="on"
+          width="80%"
         >
-          Ajouter une competence
+          Nouvelle competence
         </v-btn>
       </template>
       <v-form ref="registerForm"  lazy-validation>

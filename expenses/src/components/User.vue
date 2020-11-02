@@ -5,7 +5,6 @@
           <v-col
             cols="12"
             sm="3"
-            
           >
           
             <v-card
@@ -30,12 +29,32 @@
             </v-card>
             
             <v-spacer></v-spacer>
-            <v-flex class="pa-2">
-              <SkillFormPopup v-bind:idUser="userInfos._id" class="pa-2"/>
-              <ProjectFormPopup v-bind:idUser="userInfos._id" class="pa-2"/>
-              
-              <PictureForm v-bind:idUser="userInfos._id" class="pa-2"/>
-
+            <v-flex class="pa-2" >
+              <SkillFormPopup v-bind:idUser="userInfos._id" class="pa-2" v-show="isAdmin"/>
+              <ProjectFormPopup v-bind:idUser="userInfos._id" class="pa-2" v-show="isAdmin"/>
+              <PictureForm v-bind:idUser="userInfos._id" class="pa-2" v-show="isAdmin"/>
+               
+              <v-layout justify-center>
+                <v-btn
+                color="red"
+                dark
+                v-on:click="logout"
+                v-show="isAdmin"
+                width="80%"
+              >
+                Se déconnecter
+              </v-btn>
+                <v-btn
+                color="red"
+                dark
+                href="/"
+                v-show="!isAdmin"
+                width="80%"
+              >
+                Quitter
+              </v-btn>
+</v-layout>
+            
             </v-flex>
           </v-col>
 
@@ -150,6 +169,7 @@
             <div class="pa-2 a"><v-icon dark large>mdi-instagram </v-icon> Instagram</div>
             </v-card>
             </v-card>
+            
           </v-col>
         </v-row>
         
@@ -191,6 +211,8 @@ import PictureForm from './PictureForm'
       
     data(){
         return {
+          
+          isAdmin: false,
           show: false,
             userInfos: '',
            
@@ -202,6 +224,9 @@ import PictureForm from './PictureForm'
         }
     },
     mounted: async function (){
+        if(this.$session.get("userId")){
+          this.isAdmin = true;
+        }
         await this.getUserInfos();
         await this.getUserProjects();
        
@@ -230,6 +255,10 @@ import PictureForm from './PictureForm'
         capitalizeFirstLetter: function(string) {
             string = string.toLowerCase();
             return string.charAt(0).toUpperCase() + string.slice(1);
+        },
+        logout: function() {
+            this.$session.destroy();
+            window.location.reload();
         },
         
        
