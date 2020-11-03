@@ -62,7 +62,7 @@
             cols="12"
             sm="7"       
           >
-          <Pmap/>
+          <Pmap v-bind:adresse="this.userInfos.userAddress" class="pa-2" />
           <!-- <v-container > -->
         <v-row>
             <v-col cols="0">
@@ -215,7 +215,7 @@ import PictureForm from './PictureForm'
           isAdmin: false,
           show: false,
             userInfos: '',
-           
+                       
             userId: '',
             userProjects: {},
             userLink: {},
@@ -233,7 +233,7 @@ import PictureForm from './PictureForm'
         this.userInfos.userFirstName = this.capitalizeFirstLetter(this.userInfos.userFirstName);
         this.skillListe = this.userInfos.skillsList;
         this.listProject = this.userProjects;
-        console.log(this.listProject);
+       
         //this.userLink = this.userInfos.linkList
         
         
@@ -245,6 +245,7 @@ import PictureForm from './PictureForm'
             var jsonContent = await fetch(`http://localhost:3000/user/id/${this.$route.params.idUser}`);
             var json = await jsonContent.json();
             this.userInfos = json[0];
+            
             
         },
         getUserProjects: async function(){

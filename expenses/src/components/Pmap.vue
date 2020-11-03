@@ -21,7 +21,7 @@
         </v-card-title>
         
 
-<template>
+
 
   <div style="height: 300px; width: 100%">
     
@@ -64,7 +64,7 @@
       </l-marker>
     </l-map>
   </div>
-</template>
+
 
         
         <v-divider></v-divider>
@@ -76,7 +76,7 @@
             text
             @click="dialog = false"
           >
-            I accept
+            Fermé
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -95,7 +95,7 @@ import { LMap, LTileLayer, LMarker, LPopup, LTooltip } from "vue2-leaflet";
 
 export default {
   name: "Pmap",
-  props:[],
+  props:['adresse'],
   components: {
     LMap,
     LTileLayer,
@@ -106,7 +106,7 @@ export default {
   data() {
     return {
       zoom: 13,
-      center: latLng(47.41322, -1.219482),
+      center: "",
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
@@ -121,6 +121,21 @@ export default {
       showMap: true
     };
   },
+  beforeCreate(){
+    
+      let vm = this;
+
+        vm.$nextTick(function () {
+          console.log(vm.adresse)
+          
+           //this.loca(vm);
+           
+        });    
+      
+       
+    
+    
+  },
   methods: {
     zoomUpdate(zoom) {
       this.currentZoom = zoom;
@@ -134,6 +149,21 @@ export default {
     innerClick() {
       alert("Click!");
     }
+    ,
+     loca(vm){
+      var adr = vm.adresse;
+      adr.replaceAll(' ', '%20');
+      adr.replaceAll(',', '%2C');
+      
+      const key = "pk.2a042f7fb2119042d73b548892eac47e"
+      var url = `https://us1.locationiq.com/v1/search.php?key=${key}&q=${adr}&limit=1&accept-language=fr&countrycodes=fr&format=json`
+      fetch(url)
+      .then(response =>  response.json())
+      .then(res => {
+        this.center = latLng(parseFloat(res.lat), parseFloat(res.lon));
+        
+      })
+     }
   }
 };
 </script>
