@@ -62,12 +62,11 @@
             cols="12"
             sm="7"       
           >
-          <Pmap v-bind:adresse="this.userInfos.userAddress" class="pa-2" />
+          <Pmap v-if = "carte" v-bind:pos ="this.userInfos.userAddress" class="pa-2" />
           <!-- <v-container > -->
         <v-row>
             <v-col cols="0">
-              
-            <v-card outlined tile elevation="5" height="100%">
+              <v-card outlined tile elevation="5" height="100%">
               <v-card-text>
           <h2>Liste des competences</h2>
             <ul v-for="skill in this.skillListe" :key="skill.id">
@@ -214,6 +213,7 @@ import PictureForm from './PictureForm'
           
           isAdmin: false,
           show: false,
+          carte : false,
             userInfos: '',
                        
             userId: '',
@@ -233,6 +233,7 @@ import PictureForm from './PictureForm'
         this.userInfos.userFirstName = this.capitalizeFirstLetter(this.userInfos.userFirstName);
         this.skillListe = this.userInfos.skillsList;
         this.listProject = this.userProjects;
+        
        
         //this.userLink = this.userInfos.linkList
         
@@ -245,6 +246,7 @@ import PictureForm from './PictureForm'
             var jsonContent = await fetch(`http://localhost:3000/user/id/${this.$route.params.idUser}`);
             var json = await jsonContent.json();
             this.userInfos = json[0];
+            this.carte = true;
             
             
         },
