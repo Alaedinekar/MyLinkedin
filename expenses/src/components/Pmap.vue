@@ -1,7 +1,7 @@
 <template>
  
 
-  <div style="height: 300px; width: 100%">
+  <div style="height: 300px; width: 100%;">
     
     
     <l-map
@@ -9,7 +9,7 @@
       :zoom="zoom"
       :center="center"
       :options="mapOptions"
-      style="height: 80%"
+      style="height: 80%; z-index:1;"
       @update:center="centerUpdate"
       @update:zoom="zoomUpdate"
     >
