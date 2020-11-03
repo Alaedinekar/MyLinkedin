@@ -17,16 +17,7 @@
         :url="url"
         :attribution="attribution"
       />
-      <l-marker :lat-lng="withPopup">
-        <l-popup>
-          <div >
-            adresse
-            <p v-show="showParagraph">
-              position de l'utilisateur
-            </p>
-          </div>
-        </l-popup>
-      </l-marker>
+      
       
     </l-map>
  
@@ -40,7 +31,7 @@
 
 <script>
 import { latLng } from "leaflet";
-import { LMap, LTileLayer, LMarker, LPopup } from "vue2-leaflet";
+import { LMap, LTileLayer, } from "vue2-leaflet";
 
 export default {
   name: "Pmap",
@@ -48,9 +39,7 @@ export default {
   components: {
     LMap,
     LTileLayer,
-    LMarker,
-    LPopup,
-    
+   
   },
   
   data() {
@@ -61,12 +50,12 @@ export default {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      withPopup: latLng(47.41322, -1.219482),
+     
       
       currentZoom: 11.5,
-      currentCenter: latLng(47.41322, -1.219482),
+      
 
-      showParagraph: false,
+      
       mapOptions: {
         zoomSnap: 0.5
       },
