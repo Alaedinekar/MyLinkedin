@@ -1,0 +1,364 @@
+[{
+  "_id": {
+    "$oid": "5f945242b7c6c441b4af94e6"
+  },
+  "idOwner": {
+    "$oid": "5f7f19bf9edf0b37806604a8"
+  },
+  "projectName": "Projet Blue Beam",
+  "groupSize": 2,
+  "languagesInvolved": [
+    {
+      "_id": {
+        "$oid": "5f945242b7c6c441b4af94e7"
+      },
+      "skillName": "VueJS"
+    },
+    {
+      "_id": {
+        "$oid": "5f945242b7c6c441b4af94e8"
+      },
+      "skillName": "NodeJS"
+    }
+  ],
+  "shortDescription": "Portfolio pour référencer ses projets, décrire son profil aux recruteurs",
+  "longDescription": "Le but du projet est de proposer une interface plus détaillée aux recruteurs qui souhaiterais rechercher un profil particulier. Le but de ce projet est de pouvoir donner plus d'informations sur nous sans être limité par le format du CV traditionnel.",
+  "devTime": "1 mois",
+  "date": null,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f96ec0e344c3735d8cc2ec9"
+  },
+  "idOwner": {
+    "$oid": "5f96d42b16fdac273cab4081"
+  },
+  "projectName": "Projet Blue Beam",
+  "groupSize": 2,
+  "languagesInvolved": [
+    {
+      "_id": {
+        "$oid": "5f96ec0e344c3735d8cc2eca"
+      },
+      "skillName": "VueJS"
+    },
+    {
+      "_id": {
+        "$oid": "5f96ec0e344c3735d8cc2ecb"
+      },
+      "skillName": "NodeJS"
+    }
+  ],
+  "shortDescription": "Portfolio pour référencer ses projets, décrire son profil aux recruteurs",
+  "longDescription": "Le but du projet est de proposer une interface plus détaillée aux recruteurs qui souhaiterais rechercher un profil particulier. Le but de ce projet est de pouvoir donner plus d'informations sur nous sans être limité par le format du CV traditionnel.",
+  "devTime": "1 mois",
+  "date": null,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f96ec9b344c3735d8cc2ecc"
+  },
+  "idOwner": {
+    "$oid": "5f96d42b16fdac273cab4081"
+  },
+  "projectName": "Projet Blue Beam",
+  "groupSize": 2,
+  "languagesInvolved": [
+    {
+      "_id": {
+        "$oid": "5f96ec9b344c3735d8cc2ecd"
+      },
+      "skillName": "VueJS"
+    },
+    {
+      "_id": {
+        "$oid": "5f96ec9b344c3735d8cc2ece"
+      },
+      "skillName": "NodeJS"
+    }
+  ],
+  "shortDescription": "Portfolio pour référencer ses projets, décrire son profil aux recruteurs",
+  "longDescription": "Le but du projet est de proposer une interface plus détaillée aux recruteurs qui souhaiterais rechercher un profil particulier. Le but de ce projet est de pouvoir donner plus d'informations sur nous sans être limité par le format du CV traditionnel.",
+  "devTime": "1 mois",
+  "date": null,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f96ec9c344c3735d8cc2ecf"
+  },
+  "idOwner": {
+    "$oid": "5f96d42b16fdac273cab4081"
+  },
+  "projectName": "Projet Blue Beam",
+  "groupSize": 2,
+  "languagesInvolved": [
+    {
+      "_id": {
+        "$oid": "5f96ec9c344c3735d8cc2ed0"
+      },
+      "skillName": "VueJS"
+    },
+    {
+      "_id": {
+        "$oid": "5f96ec9c344c3735d8cc2ed1"
+      },
+      "skillName": "NodeJS"
+    }
+  ],
+  "shortDescription": "Portfolio pour référencer ses projets, décrire son profil aux recruteurs",
+  "longDescription": "Le but du projet est de proposer une interface plus détaillée aux recruteurs qui souhaiterais rechercher un profil particulier. Le but de ce projet est de pouvoir donner plus d'informations sur nous sans être limité par le format du CV traditionnel.",
+  "devTime": "1 mois",
+  "date": null,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f9b5154887ef71a9cb0e112"
+  },
+  "idOwner": {
+    "$oid": "5f99cb1ec25e8f12a8104e2a"
+  },
+  "projectName": "Blue Beam",
+  "groupSize": 2,
+  "languagesInvolved": [],
+  "shortDescription": "Tb j'ai la flemme",
+  "longDescription": "Fait moi confiance, tout vas bien se passer....",
+  "devTime": "1 mois",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f9b5861887ef71a9cb0e127"
+  },
+  "idOwner": {
+    "$oid": "5f99cb1ec25e8f12a8104e2a"
+  },
+  "projectName": "dddd",
+  "groupSize": 3,
+  "languagesInvolved": [
+    {
+      "_id": {
+        "$oid": "5f9b5861887ef71a9cb0e128"
+      },
+      "skillName": "Swift"
+    },
+    {
+      "_id": {
+        "$oid": "5f9b5861887ef71a9cb0e129"
+      },
+      "skillName": "TypeScript"
+    },
+    {
+      "_id": {
+        "$oid": "5f9b5861887ef71a9cb0e12a"
+      },
+      "skillName": "Rust"
+    },
+    {
+      "_id": {
+        "$oid": "5f9b5861887ef71a9cb0e12b"
+      },
+      "skillName": "Python"
+    },
+    {
+      "_id": {
+        "$oid": "5f9b5861887ef71a9cb0e12c"
+      },
+      "skillName": "C#"
+    }
+  ],
+  "shortDescription": "dddddd",
+  "longDescription": "dddddddddddddddddddddddddddddddddddddddddd",
+  "devTime": "dddd",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f9b5880887ef71a9cb0e12d"
+  },
+  "idOwner": {
+    "$oid": "5f99cb1ec25e8f12a8104e2a"
+  },
+  "projectName": "dazdazedazd",
+  "groupSize": 2,
+  "languagesInvolved": [
+    {
+      "_id": {
+        "$oid": "5f9b5880887ef71a9cb0e12e"
+      },
+      "skillName": "Swift"
+    },
+    {
+      "_id": {
+        "$oid": "5f9b5880887ef71a9cb0e12f"
+      },
+      "skillName": "TypeScript"
+    }
+  ],
+  "shortDescription": "azdazd",
+  "longDescription": "azdazdadz",
+  "devTime": "adazdazdaz",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f9bdc92d7f46211641ce002"
+  },
+  "idOwner": {
+    "$oid": "5f9b340192eee828fc477ad8"
+  },
+  "projectName": "FC MERGUEZ ",
+  "groupSize": 4,
+  "languagesInvolved": [
+    {
+      "_id": {
+        "$oid": "5f9bdc92d7f46211641ce003"
+      },
+      "skillName": "Oracle"
+    }
+  ],
+  "shortDescription": "Realisation d'une base de donnée avec du PL/SQL",
+  "longDescription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+  "devTime": "1",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f9bf2ec0a59a53fc457c8cc"
+  },
+  "idOwner": {
+    "$oid": "5f7f19a59edf0b37806604a7"
+  },
+  "projectName": "Extermination du clan uchiwa",
+  "groupSize": 1,
+  "languagesInvolved": [
+    {
+      "_id": {
+        "$oid": "5f9bf2ec0a59a53fc457c8cd"
+      },
+      "skillName": "Python"
+    }
+  ],
+  "shortDescription": "tu connais ",
+  "longDescription": "pour le bien de konoha",
+  "devTime": "1",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f9c60498851d53c1cf789df"
+  },
+  "idOwner": {
+    "$oid": "5f9c5f888851d53c1cf789d6"
+  },
+  "projectName": "Colloc de l'enfer avec Clausse",
+  "groupSize": 2,
+  "languagesInvolved": [
+    {
+      "_id": {
+        "$oid": "5f9c60498851d53c1cf789e0"
+      },
+      "skillName": "Wario"
+    }
+  ],
+  "shortDescription": "Collocation avec le khey Clausse ",
+  "longDescription": "Projet de destruction de la switch sur une année ",
+  "devTime": "6 mois",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f9d904151fa8d0b505b8f92"
+  },
+  "idOwner": {
+    "$oid": "5f7f19a59edf0b37806604a7"
+  },
+  "projectName": "vcxv",
+  "groupSize": 2,
+  "languagesInvolved": [
+    {
+      "_id": {
+        "$oid": "5f9d904151fa8d0b505b8f93"
+      },
+      "skillName": "TypeScript"
+    }
+  ],
+  "shortDescription": "sqdv",
+  "longDescription": "vqdcvc",
+  "devTime": "1",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f9fe8a9ff0f681c6035eccc"
+  },
+  "idOwner": {
+    "$oid": "5f9fe7ffff0f681c6035ecc0"
+  },
+  "projectName": "rapide et furieux",
+  "groupSize": 1,
+  "languagesInvolved": [
+    {
+      "_id": {
+        "$oid": "5f9fe8a9ff0f681c6035eccd"
+      },
+      "skillName": "HTML/CSS"
+    }
+  ],
+  "shortDescription": "film holywoodien",
+  "longDescription": "serie de derapage rapide et furieux",
+  "devTime": "1",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f9fe984ff0f681c6035ecdd"
+  },
+  "idOwner": {
+    "$oid": "5f9fe90eff0f681c6035ecd1"
+  },
+  "projectName": "publicité pour shampoing",
+  "groupSize": 1,
+  "languagesInvolved": [
+    {
+      "_id": {
+        "$oid": "5f9fe984ff0f681c6035ecde"
+      },
+      "skillName": "Swift"
+    }
+  ],
+  "shortDescription": "pub pour head & shoulder",
+  "longDescription": "mes cheveux sont si beaux",
+  "devTime": "1",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fa83c47147012287c485e3f"
+  },
+  "idOwner": {
+    "$oid": "5fa83b74147012287c485e30"
+  },
+  "projectName": "ABC",
+  "groupSize": 2,
+  "languagesInvolved": [
+    {
+      "_id": {
+        "$oid": "5fa83c47147012287c485e40"
+      },
+      "skillName": "Swift"
+    },
+    {
+      "_id": {
+        "$oid": "5fa83c47147012287c485e41"
+      },
+      "skillName": "TypeScript"
+    },
+    {
+      "_id": {
+        "$oid": "5fa83c47147012287c485e42"
+      },
+      "skillName": "Python"
+    },
+    {
+      "_id": {
+        "$oid": "5fa83c47147012287c485e43"
+      },
+      "skillName": "WinDev"
+    }
+  ],
+  "shortDescription": "Blabla bla",
+  "longDescription": "Blabla blaBlabla blaBlabla blaBlabla blaBlabla bla\nBlabla blaBlabla blaBlabla bla\nBlabla blaBlabla blaBlabla blaBlabla blaBlabla blaBlabla bla",
+  "devTime": "2 mois",
+  "__v": 0
+}]
