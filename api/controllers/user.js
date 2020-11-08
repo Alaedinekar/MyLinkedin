@@ -152,6 +152,19 @@ const setUserPicture = async (req,res) => {
             res.send({message : "Succesfully updated"})
     })
 }
+const setUserLink = async (req,res) => {
+    const id = {_id: req.params.id};
+    const data = req.body;
+    let link = {linkTarget : data.linkTarget, URL : data.URL};
+    let newElement = {$addToSet : {linkList : link}};
+    await userModel.findOneAndUpdate(
+        id,
+        newElement,
+        (err, doc) => {
+            res.send(doc);
+     })  
+}
+
 module.exports = {
     newUser : newUser,
     getUsers : getUsers,
@@ -164,5 +177,6 @@ module.exports = {
     connection : connection,
     emptyUser: emptyUser,
     isAlreadyRegistered: isAlreadyRegistered,
-    setUserPicture : setUserPicture
+    setUserPicture : setUserPicture,
+    setUserLink : setUserLink
 }

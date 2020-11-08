@@ -19,6 +19,7 @@ router.get('/example', userController.emptyUser);
 
 //
 router.patch('/id/:id/setPic', userController.setUserPicture);
+router.patch('/id/:id/setLink', userController.setUserLink);
 
 
 

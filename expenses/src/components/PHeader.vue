@@ -11,7 +11,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn icon href="/">
+      <v-btn icon @click="logout" href="/">
         <v-icon>mdi-export</v-icon>
       </v-btn>
     </v-toolbar>
@@ -20,6 +20,12 @@
 
 <script>
 export default {
+  methods: {
+    logout: function() {
+            this.$session.destroy();
+            window.location.reload();
+        }
+  }
 };
 </script>
 

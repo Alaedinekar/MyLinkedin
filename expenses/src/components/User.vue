@@ -33,6 +33,7 @@
               <SkillFormPopup v-bind:idUser="userInfos._id" class="pa-2" v-show="isAdmin"/>
               <ProjectFormPopup v-bind:idUser="userInfos._id" class="pa-2" v-show="isAdmin"/>
               <PictureForm v-bind:idUser="userInfos._id" class="pa-2" v-show="isAdmin"/>
+              <LinkForm v-bind:idUser="userInfos._id" class="pa-2" v-show="isAdmin"/>
                
               <v-layout justify-center>
                 <v-btn
@@ -142,7 +143,8 @@
               elevation="4"
               class="ma-2"
               color="#007bb5"
-              @click="getUserInfos"
+              :href="userLink.linkedin"
+              target="blank"
             >
             <div class="a"><v-icon dark large>mdi-linkedin </v-icon> Linkedin</div>
             
@@ -153,8 +155,8 @@
               elevation="4"
               class="ma-2"
               color="#24292e"
-              @click="getUserInfos"
-              hover
+              :href="userLink.github"
+              target="blank"
             >
             <div class="a pa-2"><v-icon dark large>mdi-github </v-icon>GitHub </div>
             </v-card>
@@ -162,7 +164,7 @@
               height="30%"
               elevation="4"
               class="ma-2 insta"
-              href=""
+              :href="userLink.instagram"
               target="blank"
             >
             <div class="pa-2 a"><v-icon dark large>mdi-instagram </v-icon> Instagram</div>
@@ -201,11 +203,12 @@ import ProjectFormPopup from './ProjectFormPopup'
 import SkillFormPopup from './SkillFormPopup'
 import Pmap from './Pmap'  
 import PictureForm from './PictureForm'
+import LinkForm from './LinkForm'
 
 
 
   export default {
-    components : { ProjectFormPopup, SkillFormPopup, PictureForm,Pmap },
+    components : { ProjectFormPopup, SkillFormPopup, PictureForm, Pmap, LinkForm },
       name: 'user',
       
     data(){
@@ -218,7 +221,7 @@ import PictureForm from './PictureForm'
                        
             userId: '',
             userProjects: {},
-            userLink: {},
+            userLink: [],
             skillName :'',
             skillListe:[]
         }
@@ -233,8 +236,15 @@ import PictureForm from './PictureForm'
         this.userInfos.userFirstName = this.capitalizeFirstLetter(this.userInfos.userFirstName);
         this.skillListe = this.userInfos.skillsList;
         this.listProject = this.userProjects;
-        
-       
+        for( let i = 0 ; i < this.userInfos.linkList.length ; i++){
+          if(this.userInfos.linkList[i].linkTarget == "github"){
+            this.userLink.github = this.userInfos.linkList[i].URL
+          }else if(this.userInfos.linkList[i].linkTarget == "instagram"){
+            this.userLink.instagram = this.userInfos.linkList[i].URL
+          }else if(this.userInfos.linkList[i].linkTarget == "linkedin"){
+            this.userLink.linkedin = this.userInfos.linkList[i].URL
+          }
+        }
         //this.userLink = this.userInfos.linkList
         
         
